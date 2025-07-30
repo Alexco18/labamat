@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Accueil - Projets Maquettes</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Maquettes interactives</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Bienvenue sur notre collection de maquettes</h1>
-    <p>Explorez les projets en survolant les boutons ci-dessous</p>
+    <p>Survolez un thème pour en savoir plus</p>
   </header>
 
-  <main>
+  <nav>
     <ul class="menu">
       <li>Avion</li>
       <li>Sub</li>
       <li>Bateau</li>
     </ul>
+  </nav>
 
-    <div class="info" id="infoBox">
-      <div class="info-content">
-        <img id="infoImg" src="" alt="Illustration du projet" />
-        <div class="info-text-block">
-          <p id="infoText"></p>
-          <a id="infoLink" href="#" target="_blank">Voir le projet</a>
-        </div>
+  <section class="presentation">
+    <h2>Présentation des projets</h2>
+    <p>Explorez nos maquettes innovantes en survolant les onglets ci-dessus. Une description détaillée s'affichera automatiquement pour chaque projet.</p>
+  </section>
+
+  <div class="info" id="infoBox">
+    <div class="info-content">
+      <img id="infoImg" src="" alt="Illustration du projet" />
+      <div>
+        <p id="infoText"></p>
+        <a id="infoLink" href="#" target="_blank">Voir le projet</a>
       </div>
     </div>
-  </main>
+  </div>
 
   <footer>
     <p>&copy; 2025 - Atelier des Maquettes</p>

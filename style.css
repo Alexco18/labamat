@@ -1,26 +1,26 @@
-/* Général */
+/* Base */
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #fff;
   color: #333;
 }
 
-/* Barre de navigation */
+/* Barre de menu */
 nav {
   background-color: #007bff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 1em 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .menu {
+  list-style: none;
   display: flex;
   justify-content: center;
-  list-style: none;
+  gap: 2em;
   margin: 0;
   padding: 0;
-  gap: 2em;
 }
 
 .menu li {
@@ -36,20 +36,23 @@ nav {
 
 /* Bulle d'information */
 .info {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 1em;
-  margin: 1.5em auto;
+  margin: 1em auto;
   width: 90%;
   max-width: 650px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .info-content {
   display: flex;
-  align-items: center;
   gap: 1em;
+  align-items: center;
 }
 
 .info-content img {
@@ -61,7 +64,7 @@ nav {
 
 #infoText {
   font-size: 1em;
-  margin-bottom: 0.5em;
+  margin: 0 0 0.5em 0;
 }
 
 #infoLink {
@@ -74,12 +77,12 @@ nav {
   text-decoration: underline;
 }
 
-/* Section présentation */
+/* Présentation */
 .presentation {
-  text-align: center;
   padding: 2em 1em;
+  text-align: center;
   background-color: #eef3f8;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #ddd;
 }
 
 .presentation h2 {

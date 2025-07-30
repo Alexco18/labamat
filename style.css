@@ -48,12 +48,23 @@ nav {
   color: #ffcc00;
 }
 
-/* Bloc d'information survol */
+/* Zone info visuelle */
 .info {
   display: none;
-  text-align: center;
   margin: 1em auto;
   animation: fadeIn 0.5s ease-in-out;
+  max-width: 800px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.info-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
 }
 
 .info img {
@@ -64,8 +75,19 @@ nav {
 
 #infoText {
   font-style: italic;
-  margin-top: 0.5em;
   color: #444;
+  margin-bottom: 0.5em;
+}
+
+#infoLink {
+  display: inline-block;
+  text-decoration: none;
+  color: #00264d;
+  font-weight: bold;
+}
+
+#infoLink:hover {
+  text-decoration: underline;
 }
 
 @keyframes fadeIn {

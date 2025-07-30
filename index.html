@@ -1,47 +1,133 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LAB Créatif - Air & Mer</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <title>Menu interactif</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu li {
+      padding: 10px 20px;
+      background: #0077cc;
+      color: white;
+      cursor: pointer;
+    }
+
+    .info {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      width: 300px;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      display: none;
+      padding: 10px;
+      z-index: 10;
+    }
+
+    .info-content {
+      display: flex;
+      gap: 10px;
+    }
+
+    .info img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
+
+    .info a {
+      display: inline-block;
+      margin-top: 5px;
+      color: #0077cc;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>LAB Créatif</h1>
-    <p>De l’avion au sous-marin — Conception & Innovation</p>
-  </header>
+  <ul class="menu">
+    <li>Avion</li>
+    <li>Sub</li>
+    <li>Bateau</li>
+  </ul>
 
-  <nav>
-    <ul class="menu">
-      <li onmouseover="showInfo('avion')" onmouseout="hideInfo()">Avions</li>
-      <li onmouseover="showInfo('sub')" onmouseout="hideInfo()">Sous-marins</li>
-      <li onmouseover="showInfo('bateau')" onmouseout="hideInfo()">Bateaux</li>
-    </ul>
-  </nav>
-
-  <div class="info" id="infoBox"
-     onmouseover="keepInfoVisible()" onmouseout="hideInfo()">
-  <div class="info-content">
-    <img id="infoImg" src="" alt="Illustration" />
-    <div>
-      <p id="infoText"></p>
-      <a id="infoLink" href="#" target="_blank">Voir le projet</a>
+  <div class="info" id="infoBox">
+    <div class="info-content">
+      <img id="infoImg" src="" alt="Illustration" />
+      <div>
+        <p id="infoText"></p>
+        <a id="infoLink" href="#" target="_blank">Voir le projet</a>
+      </div>
     </div>
   </div>
-</div>
 
+  <script>
+    let infoBox = document.getElementById("infoBox");
+    let infoImg = document.getElementById("infoImg");
+    let infoText = document.getElementById("infoText");
+    let infoLink = document.getElementById("infoLink");
 
-  <section class="presentation">
-    <h2>Présentation</h2>
-    <p>
-      Bienvenue sur le site de mon laboratoire personnel de conception. Passionné par les projets techniques et créatifs, je réalise des maquettes et prototypes variés : avions, sous-marins, bateaux miniatures, et bien plus encore.
-    </p>
-  </section>
+    const data = {
+      avion: {
+        img: "img/avion.jpg",
+        text: "Design et aérodynamique des maquettes volantes.",
+        link: "projets/avion.html"
+      },
+      sub: {
+        img: "img/submarine.jpg",
+        text: "Exploration des systèmes immergés et propulsion sous-marine.",
+        link: "projets/sous-marin.html"
+      },
+      bateau: {
+        img: "img/boat.jpg",
+        text: "Modélisation navale et stabilité en milieu aquatique.",
+        link: "projets/bateau.html"
+      }
+    };
 
-  <footer>
-    <p>© 2025 - LAB Créatif. Tous droits réservés.</p>
-  </footer>
+    function showInfo(theme) {
+      const item = data[theme];
+      infoImg.src = item.img;
+      infoText.textContent = item.text;
+      infoLink.href = item.link;
+      infoBox.style.display = "block";
+    }
+
+    function setupPersistentHover() {
+      const menuItems = document.querySelectorAll(".menu li");
+
+      menuItems.forEach(li => {
+        li.addEventListener("mouseenter", () => {
+          showInfo(li.textContent.toLowerCase());
+        });
+        li.addEventListener("mouseleave", tryHideInfo);
+      });
+
+      infoBox.addEventListener("mouseenter", () => {
+        infoBox.dataset.hovered = "true";
+      });
+      infoBox.addEventListener("mouseleave", tryHideInfo);
+    }
+
+    function tryHideInfo() {
+      infoBox.dataset.hovered = "false";
+      setTimeout(() => {
+        if (infoBox.dataset.hovered === "false") {
+          infoBox.style.display = "none";
+        }
+      }, 200);
+    }
+
+    document.addEventListener("DOMContentLoaded", setupPersistentHover);
+  </script>
 </body>
 </html>

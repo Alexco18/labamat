@@ -19,8 +19,61 @@ header h1 {
 
 header p {
   font-size: 1.2em;
+  margin: 0.5em 0 0;
 }
 
+/* Barre de menu */
+nav {
+  background-color: #003366;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+.menu li {
+  margin: 0 1em;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.menu li:hover {
+  text-decoration: underline;
+  color: #ffcc00;
+}
+
+/* Bloc d'information survol */
+.info {
+  display: none;
+  text-align: center;
+  margin: 1em auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.info img {
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#infoText {
+  font-style: italic;
+  margin-top: 0.5em;
+  color: #444;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Section principale */
 .presentation {
   max-width: 800px;
   margin: 2em auto;
@@ -36,42 +89,4 @@ footer {
   padding: 1em;
   background-color: #e0e0e0;
   font-size: 0.9em;
-}
-nav {
-  background-color: #003366;
-}
-
-.menu {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0.5em;
-}
-
-.menu li {
-  margin: 0 1em;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.menu li:hover {
-  text-decoration: underline;
-}
-
-.info {
-  display: none;
-  text-align: center;
-  margin: 1em auto;
-}
-
-.info img {
-  max-width: 300px;
-  border-radius: 8px;
-}
-
-#infoText {
-  font-style: italic;
-  margin-top: 0.5em;
 }

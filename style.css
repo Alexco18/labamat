@@ -37,3 +37,41 @@ footer {
   background-color: #e0e0e0;
   font-size: 0.9em;
 }
+nav {
+  background-color: #003366;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.5em;
+}
+
+.menu li {
+  margin: 0 1em;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.menu li:hover {
+  text-decoration: underline;
+}
+
+.info {
+  display: none;
+  text-align: center;
+  margin: 1em auto;
+}
+
+.info img {
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+#infoText {
+  font-style: italic;
+  margin-top: 0.5em;
+}

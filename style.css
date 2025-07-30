@@ -1,75 +1,90 @@
-/* Base */
 body {
-  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f9f9f9;
   color: #333;
+}
+
+header {
+  background-color: #00264d;
+  color: white;
+  padding: 2em;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+header p {
+  font-size: 1.2em;
+  margin: 0.5em 0 0;
 }
 
 /* Barre de menu */
 nav {
-  background-color: #007bff;
-  padding: 1em 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: #003366;
 }
 
 .menu {
-  list-style: none;
   display: flex;
   justify-content: center;
-  gap: 2em;
+  list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.5em 0;
 }
 
 .menu li {
+  margin: 0 1em;
   color: white;
-  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  font-weight: bold;
+  transition: all 0.3s;
 }
 
 .menu li:hover {
-  transform: scale(1.1);
+  text-decoration: underline;
+  color: #ffcc00;
 }
 
-/* Bulle d'information */
+/* Zone info visuelle */
 .info {
   display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  margin: 1em auto;
+  animation: fadeIn 0.5s ease-in-out;
+  max-width: 800px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
   padding: 1em;
-  margin: 1em auto;
-  width: 90%;
-  max-width: 650px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .info-content {
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
   align-items: center;
 }
 
-.info-content img {
-  width: 120px;
-  height: auto;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+.info img {
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 #infoText {
-  font-size: 1em;
-  margin: 0 0 0.5em 0;
+  font-style: italic;
+  color: #444;
+  margin-bottom: 0.5em;
 }
 
 #infoLink {
+  display: inline-block;
   text-decoration: none;
-  color: #007bff;
+  color: #00264d;
   font-weight: bold;
 }
 
@@ -77,22 +92,25 @@ nav {
   text-decoration: underline;
 }
 
-/* Présentation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Section principale */
 .presentation {
-  padding: 2em 1em;
-  text-align: center;
-  background-color: #eef3f8;
-  border-top: 1px solid #ddd;
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
 }
 
 .presentation h2 {
-  color: #007bff;
-  margin-bottom: 0.5em;
+  color: #00264d;
 }
 
-.presentation p {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.1em;
-  line-height: 1.6;
+footer {
+  text-align: center;
+  padding: 1em;
+  background-color: #e0e0e0;
+  font-size: 0.9em;
 }

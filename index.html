@@ -21,10 +21,17 @@
     </ul>
   </nav>
 
-  <div class="info" id="infoBox">
+  <div class="info" id="infoBox"
+     onmouseover="keepInfoVisible()" onmouseout="hideInfo()">
+  <div class="info-content">
     <img id="infoImg" src="" alt="Illustration" />
-    <p id="infoText"></p>
+    <div>
+      <p id="infoText"></p>
+      <a id="infoLink" href="#" target="_blank">Voir le projet</a>
+    </div>
   </div>
+</div>
+
 
   <section class="presentation">
     <h2>Présentation</h2>

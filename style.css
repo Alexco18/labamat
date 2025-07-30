@@ -1,114 +1,64 @@
 body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-header {
-  background-color: #00264d;
-  color: white;
-  padding: 2em;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.5em;
-}
-
-header p {
-  font-size: 1.2em;
-  margin: 0.5em 0 0;
-}
-
-/* Barre de menu */
-nav {
-  background-color: #003366;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 50px;
 }
 
 .menu {
-  display: flex;
-  justify-content: center;
   list-style: none;
-  margin: 0;
-  padding: 0.5em 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
 }
 
 .menu li {
-  margin: 0 1em;
+  background-color: #0077cc;
   color: white;
+  padding: 12px 20px;
   cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
 .menu li:hover {
-  text-decoration: underline;
-  color: #ffcc00;
+  background-color: #005fa3;
 }
 
-/* Zone info visuelle */
 .info {
-  display: none;
-  margin: 1em auto;
-  animation: fadeIn 0.5s ease-in-out;
-  max-width: 800px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  width: 320px;
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 1em;
+  display: none;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: opacity 0.3s ease;
+  z-index: 100;
 }
 
 .info-content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
   align-items: center;
+  gap: 10px;
 }
 
 .info img {
-  max-width: 300px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
-#infoText {
-  font-style: italic;
-  color: #444;
-  margin-bottom: 0.5em;
-}
-
-#infoLink {
+.info a {
   display: inline-block;
+  margin-top: 6px;
+  color: #0077cc;
   text-decoration: none;
-  color: #00264d;
   font-weight: bold;
 }
 
-#infoLink:hover {
+.info a:hover {
   text-decoration: underline;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-/* Section principale */
-.presentation {
-  max-width: 800px;
-  margin: 2em auto;
-  padding: 0 1em;
-}
-
-.presentation h2 {
-  color: #00264d;
-}
-
-footer {
-  text-align: center;
-  padding: 1em;
-  background-color: #e0e0e0;
-  font-size: 0.9em;
 }

@@ -2,25 +2,36 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Menu interactif avec infobox</title>
+  <title>Accueil - Projets Maquettes</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <ul class="menu">
-    <li>Avion</li>
-    <li>Sub</li>
-    <li>Bateau</li>
-  </ul>
+  <header>
+    <h1>Bienvenue sur notre collection de maquettes</h1>
+    <p>Explorez les projets en survolant les boutons ci-dessous</p>
+  </header>
 
-  <div class="info" id="infoBox">
-    <div class="info-content">
-      <img id="infoImg" src="" alt="Illustration" />
-      <div>
-        <p id="infoText"></p>
-        <a id="infoLink" href="#" target="_blank">Voir le projet</a>
+  <main>
+    <ul class="menu">
+      <li>Avion</li>
+      <li>Sub</li>
+      <li>Bateau</li>
+    </ul>
+
+    <div class="info" id="infoBox">
+      <div class="info-content">
+        <img id="infoImg" src="" alt="Illustration du projet" />
+        <div class="info-text-block">
+          <p id="infoText"></p>
+          <a id="infoLink" href="#" target="_blank">Voir le projet</a>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Atelier des Maquettes</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>

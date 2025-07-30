@@ -27,7 +27,9 @@ function showInfo(theme) {
   infoText.textContent = item.text;
   infoLink.href = item.link;
   infoBox.style.display = "block";
-  infoBox.style.opacity = "1";
+  setTimeout(() => {
+    infoBox.style.opacity = "1";
+  }, 10);
 }
 
 function setupPersistentHover() {
@@ -38,6 +40,7 @@ function setupPersistentHover() {
       const key = li.textContent.trim().toLowerCase();
       showInfo(key);
     });
+
     li.addEventListener("mouseleave", tryHideInfo);
   });
 

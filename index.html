@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maquettes Interactives</title>
+  <title>Maquettes dynamiques</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Barre de menu -->
+  <!-- Barre de navigation -->
   <nav>
     <ul class="menu">
-      <li onmouseover="afficherInfo('avion')">Avion</li>
-      <li onmouseover="afficherInfo('sub')">Submersible</li>
-      <li onmouseover="afficherInfo('bateau')">Bateau</li>
+      <li>Avion</li>
+      <li>Sub</li>
+      <li>Bateau</li>
     </ul>
   </nav>
 
-  <!-- Bulle d'information -->
+  <!-- Bulle d'information (positionnée juste sous le menu) -->
   <div class="info" id="infoBox">
     <div class="info-content">
       <img id="infoImg" src="" alt="Illustration du projet" />
@@ -28,38 +28,79 @@
     </div>
   </div>
 
-  <!-- Section présentation -->
+  <!-- Section de présentation -->
   <section class="presentation">
-    <h2>Présentation des projets</h2>
-    <p>Explorez nos maquettes innovantes en survolant les onglets ci-dessus. Une description détaillée s'affichera automatiquement pour chaque projet.</p>
+    <h2>Présentation</h2>
+    <p>Découvrez nos projets en survolant les onglets ci-dessus. Une description s'affiche automatiquement.</p>
   </section>
 
   <script>
-    const infos = {
+    let infoBox = document.getElementById("infoBox");
+    let infoImg = document.getElementById("infoImg");
+    let infoText = document.getElementById("infoText");
+    let infoLink = document.getElementById("infoLink");
+
+    const data = {
       avion: {
-        img: "avion.jpg",
-        texte: "Voici notre prototype d’avion à énergie solaire.",
-        lien: "https://exemple.com/avion"
+        img: "img/avion.jpg",
+        text: "Design et aérodynamique des maquettes volantes.",
+        link: "projets/avion.html"
       },
       sub: {
-        img: "sub.jpg",
-        texte: "Découvrez notre submersible autonome pour l’exploration marine.",
-        lien: "https://exemple.com/sub"
+        img: "img/submarine.jpg",
+        text: "Exploration des systèmes immergés et propulsion sous-marine.",
+        link: "projets/sous-marin.html"
       },
       bateau: {
-        img: "bateau.jpg",
-        texte: "Un bateau intelligent pour le transport fluvial.",
-        lien: "https://exemple.com/bateau"
+        img: "img/boat.jpg",
+        text: "Modélisation navale et stabilité en milieu aquatique.",
+        link: "projets/bateau.html"
       }
     };
 
-    function afficherInfo(type) {
-      const info = infos[type];
-      document.getElementById("infoImg").src = info.img;
-      document.getElementById("infoText").textContent = info.texte;
-      document.getElementById("infoLink").href = info.lien;
+    function showInfo(theme) {
+      const item = data[theme];
+      infoImg.src = item.img;
+      infoText.textContent = item.text;
+      infoLink.href = item.link;
+      infoBox.style.display = "block";
+      setTimeout(() => {
+        infoBox.style.opacity = "1";
+      }, 10);
     }
-  </script>
 
+    function setupPersistentHover() {
+      const menuItems = document.querySelectorAll(".menu li");
+
+      menuItems.forEach(li => {
+        li.addEventListener("mouseenter", () => {
+          const key = li.textContent.trim().toLowerCase();
+          showInfo(key);
+        });
+
+        li.addEventListener("mouseleave", tryHideInfo);
+      });
+
+      infoBox.addEventListener("mouseenter", () => {
+        infoBox.dataset.hovered = "true";
+      });
+
+      infoBox.addEventListener("mouseleave", tryHideInfo);
+    }
+
+    function tryHideInfo() {
+      infoBox.dataset.hovered = "false";
+      setTimeout(() => {
+        if (infoBox.dataset.hovered === "false") {
+          infoBox.style.opacity = "0";
+          setTimeout(() => {
+            infoBox.style.display = "none";
+          }, 300);
+        }
+      }, 200);
+    }
+
+    document.addEventListener("DOMContentLoaded", setupPersistentHover);
+  </script>
 </body>
 </html>

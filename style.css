@@ -1,56 +1,58 @@
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
-  color: #0ff;
   background-color: #000;
+  color: #0ff;
   overflow-x: hidden;
 }
 
-header {
+.hero {
   text-align: center;
-  padding: 2rem;
-  background-color: #111;
-  box-shadow: 0 0 20px #0ff;
+  padding: 5vh 2rem;
+  background-color: rgba(10, 10, 10, 0.8);
 }
 
-nav a {
-  margin: 0 1rem;
-  color: #fff;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: #0ff;
-}
-
-.project-card {
-  background: #111;
-  border: 1px solid #0ff;
-  padding: 1rem;
-  margin: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #0ff;
-}
-
-.animated-bg {
+#menu-btn {
   position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: 2px solid #0ff;
+  color: #0ff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#sidebar {
+  position: fixed;
+  right: -250px;
   top: 0;
-  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: rgba(5, 5, 15, 0.95);
+  box-shadow: 0 0 15px #0ff;
+  transition: right 0.3s ease;
+  padding: 2rem;
+}
+
+#sidebar nav a {
+  display: block;
+  margin-bottom: 1rem;
+  color: #0ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.bg-animation {
+  position: fixed;
   width: 100%;
   height: 100%;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(0,255,255,0.05) 0,
-    rgba(0,255,255,0.05) 1px,
-    transparent 2px,
-    transparent 10px
-  );
-  animation: scrollBG 10s linear infinite;
+  background: radial-gradient(ellipse at center, #022 0%, #000 100%);
+  animation: pulse 6s infinite;
   z-index: -1;
 }
 
-@keyframes scrollBG {
-  from { background-position: 0 0; }
-  to { background-position: 1000px 1000px; }
+@keyframes pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.4; }
 }

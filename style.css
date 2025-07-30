@@ -1,93 +1,116 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #e0f2ff;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f9f9f9;
   color: #333;
 }
 
 header {
-  background-color: #0077cc;
+  background-color: #00264d;
   color: white;
+  padding: 2em;
   text-align: center;
-  padding: 40px 20px;
 }
 
-main {
-  padding: 40px 20px;
-  position: relative;
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+header p {
+  font-size: 1.2em;
+  margin: 0.5em 0 0;
+}
+
+/* Barre de menu */
+nav {
+  background-color: #003366;
 }
 
 .menu {
-  list-style: none;
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 0;
-  margin-top: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0.5em 0;
 }
 
 .menu li {
-  background-color: #0077cc;
+  margin: 0 1em;
   color: white;
-  padding: 14px 28px;
   cursor: pointer;
-  border-radius: 6px;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  transition: all 0.3s;
 }
 
 .menu li:hover {
-  background-color: #005fa3;
+  text-decoration: underline;
+  color: #ffcc00;
 }
 
+/* Zone info visuelle */
 .info {
-  position: absolute;
-  top: 160px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 360px;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  padding: 15px;
   display: none;
+  margin: 1em auto;
+  animation: fadeIn 0.5s ease-in-out;
+  max-width: 800px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 1em;
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 1000;
 }
 
 .info-content {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
   align-items: center;
-  gap: 14px;
 }
 
 .info img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 6px;
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.info-text-block {
-  flex: 1;
+#infoText {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 0.5em;
 }
 
-.info a {
+#infoLink {
   display: inline-block;
-  margin-top: 8px;
-  color: #0077cc;
   text-decoration: none;
+  color: #00264d;
   font-weight: bold;
 }
 
-.info a:hover {
+#infoLink:hover {
   text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Section principale */
+.presentation {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+
+.presentation h2 {
+  color: #00264d;
 }
 
 footer {
   text-align: center;
-  padding: 30px 20px;
-  background-color: #f4f4f4;
+  padding: 1em;
+  background-color: #e0e0e0;
   font-size: 0.9em;
 }

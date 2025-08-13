@@ -17,7 +17,7 @@ const data = {
   bateau: {
     img: "img/boat.jpg",
     text: "Modélisation navale et stabilité en milieu aquatique.",
-    link: "projets/bateau.html"
+    link: "bateau.html"
   }
 };
 

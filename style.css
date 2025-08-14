@@ -1,3 +1,4 @@
+/* === Base === */
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
@@ -5,6 +6,7 @@ body {
   color: #333;
 }
 
+/* === Header === */
 header {
   background-color: #00264d;
   color: white;
@@ -22,7 +24,7 @@ header p {
   margin: 0.5em 0 0;
 }
 
-/* Barre de menu */
+/* === Barre de menu === */
 nav {
   background-color: #003366;
 }
@@ -48,7 +50,7 @@ nav {
   color: #ffcc00;
 }
 
-/* Zone info visuelle */
+/* === Zone info visuelle === */
 .info {
   display: none;
   margin: 1em auto;
@@ -97,7 +99,7 @@ nav {
   to {opacity: 1;}
 }
 
-/* Section principale */
+/* === Section principale === */
 .presentation {
   max-width: 800px;
   margin: 2em auto;
@@ -108,6 +110,74 @@ nav {
   color: #00264d;
 }
 
+/* === Sections de contenu === */
+.section {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 1em;
+  background-color: #fff;
+  border-left: 5px solid #00264d;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+
+.section h2 {
+  margin-top: 0;
+  color: #00264d;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: left;
+}
+
+.section p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+
+.section img,
+.section video {
+  display: block;
+  margin: 1em auto;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* === Formulaire de devis === */
+form {
+  margin-top: 1em;
+}
+
+form label {
+  display: block;
+  margin: 0.5em 0 0.2em;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.7em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+form input[type="submit"] {
+  margin-top: 1em;
+  background-color: #00264d;
+  color: white;
+  border: none;
+  padding: 0.8em 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background-color: #004080;
+}
+
+/* === Footer === */
 footer {
   text-align: center;
   padding: 1em;

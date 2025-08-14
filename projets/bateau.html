@@ -2,17 +2,50 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Projet Bateau</title>
+  <title>Maquette Bateau</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <header>
-    <h1>Maquette Bateau</h1>
+    <h1>Présentation de la Maquette</h1>
   </header>
 
   <main>
-    <p>Analyse de la stabilité, de la flottabilité et du design naval.</p>
-    <img src="../img/boat.jpg" alt="Maquette bateau" />
+    <section class="section">
+      <h2>Description</h2>
+      <p>Cette maquette représente un voilier de course à l’échelle 1:50. Elle est conçue en bois léger, avec une attention particulière portée à la forme de la coque et au gréement.</p>
+    </section>
+
+    <section class="section">
+      <h2>Photos & Vidéos</h2>
+      <img src="../img/maquette1.jpg" alt="Vue latérale de la maquette" />
+      <img src="../img/maquette2.jpg" alt="Vue de dessus de la maquette" />
+      <video controls width="400">
+        <source src="../videos/maquette.mp4" type="video/mp4" />
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+    </section>
+
+    <section class="section">
+      <h2>Montage</h2>
+      <p>Le montage s’effectue en plusieurs étapes : découpe des pièces, assemblage de la coque, installation du mât et des voiles. Un guide PDF est disponible sur demande.</p>
+    </section>
+
+    <section class="section">
+      <h2>Demande de devis</h2>
+      <form action="mailto:atelier@maquettes.fr" method="post" enctype="text/plain">
+        <label for="nom">Nom :</label><br />
+        <input type="text" id="nom" name="nom" /><br /><br />
+
+        <label for="email">Email :</label><br />
+        <input type="email" id="email" name="email" /><br /><br />
+
+        <label for="message">Message :</label><br />
+        <textarea id="message" name="message" rows="5" cols="40"></textarea><br /><br />
+
+        <input type="submit" value="Envoyer la demande" />
+      </form>
+    </section>
   </main>
 
   <footer>
@@ -20,4 +53,3 @@
   </footer>
 </body>
 </html>
-

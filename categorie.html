@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Catégorie</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    .project { margin-bottom: 2rem; }
+    .project img { width: 100%; max-width: 400px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <h1 id="categoryTitle"></h1>
+  <div id="categoryProjects"></div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+
+    const projectData = {
+      avion: { title: "Maquettes Volantes", img: "...", link: "..." },
+      sub: { title: "Sous-marins Autonomes", img: "...", link: "..." },
+      bateau: { title: "Modélisme Naval", img: "...", link: "..." },
+      electronique: { title: "Électronique Embarquée", img: "...", link: "..." }
+    };
+
+    const container = document.getElementById('categoryProjects');
+    const title = document.getElementById('categoryTitle');
+
+    if (projectData[type]) {
+      title.textContent = `Projets : ${projectData[type].title}`;
+      const project = projectData[type];
+      container.innerHTML = `
+        <div class="project">
+          <img src="${project.img}" alt="${project.title}" />
+          <h2>${project.title}</h2>
+          <a href="${project.link}">Voir le projet →</a>
+        </div>
+      `;
+    } else {
+      title.textContent = "Catégorie non trouvée.";
+    }
+  </script>
+</body>
+</html>

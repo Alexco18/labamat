@@ -4,33 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LABAMAT - Laboratoire des Amateurs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0066cc;
       --primary-dark: #004499;
-      --primary-light: #3388dd;
       --accent: #ff6b35;
       --dark: #1a1a2e;
       --light: #f8fafc;
       --gray-100: #f1f5f9;
       --gray-200: #e2e8f0;
       --gray-600: #475569;
-      --gray-800: #1e293b;
       --text: #334155;
       --gradient-bg: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      --glass-bg: rgba(255, 255, 255, 0.1);
-      --glass-border: rgba(255, 255, 255, 0.2);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--light);
@@ -39,7 +28,6 @@
       overflow-x: hidden;
     }
 
-    /* Header Hero Section */
     .hero {
       background: var(--gradient-bg);
       min-height: 100vh;
@@ -48,60 +36,24 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      text-align: center;
       color: white;
-      z-index: 2;
-      max-width: 800px;
-      padding: 0 2rem;
+      text-align: center;
+      padding: 2rem;
     }
 
     .logo {
       font-size: 4rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      letter-spacing: -2px;
       background: linear-gradient(45deg, #ffffff, #e0e7ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    .tagline {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      font-weight: 300;
-      opacity: 0.9;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 3rem;
-      opacity: 0.8;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .tagline { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .subtitle { font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; }
 
     .cta-button {
-      display: inline-block;
       background: var(--accent);
       color: white;
       padding: 1rem 2.5rem;
@@ -109,46 +61,24 @@
       border-radius: 50px;
       font-weight: 600;
       font-size: 1.1rem;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .cta-button:hover::before {
-      left: 100%;
+      transition: 0.3s;
     }
 
     .cta-button:hover {
+      background: #ff875c;
       transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
     }
 
-    /* Navigation flottante */
     .nav-container {
       position: fixed;
       top: 2rem;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1000;
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(20px);
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
       border-radius: 50px;
       padding: 0.5rem;
-      opacity: 0;
-      animation: slideDown 1s ease 0.5s forwards;
     }
 
     .nav-menu {
@@ -163,8 +93,7 @@
       color: white;
       font-weight: 500;
       border-radius: 25px;
-      transition: all 0.3s ease;
-      position: relative;
+      transition: 0.3s;
     }
 
     .nav-item:hover {
@@ -172,7 +101,6 @@
       transform: scale(1.05);
     }
 
-    /* Section des projets */
     .projects-section {
       padding: 6rem 2rem;
       max-width: 1200px;
@@ -197,85 +125,10 @@
       margin-right: auto;
     }
 
-    /* Info box modernisée */
-    .info-box {
-      display: none;
-      margin: 2rem auto 4rem;
-      max-width: 900px;
-      background: white;
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-      border: 1px solid var(--gray-200);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .info-box.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .info-content {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .info-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .info-text-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .info-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--dark);
-    }
-
-    .info-description {
-      color: var(--gray-600);
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .info-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      border: 2px solid var(--primary);
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      align-self: flex-start;
-    }
-
-    .info-link:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateX(5px);
-    }
-
-    /* Grid des projets */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
     }
 
     .project-card {
@@ -283,9 +136,9 @@
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: 0.3s;
       border: 1px solid var(--gray-200);
-      position: relative;
+      cursor: pointer;
     }
 
     .project-card:hover {
@@ -301,20 +154,6 @@
       justify-content: center;
       color: white;
       font-size: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
     }
 
     .card-content {
@@ -338,7 +177,6 @@
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
     }
 
     .tag {
@@ -350,17 +188,10 @@
       font-weight: 500;
     }
 
-    /* Footer */
     footer {
       background: var(--dark);
       color: white;
-      padding: 3rem 2rem 2rem;
-      margin-top: 4rem;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 3rem 2rem;
       text-align: center;
     }
 
@@ -368,96 +199,39 @@
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      background: linear-gradient(45deg, var(--primary-light), var(--accent));
+      background: linear-gradient(45deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Animations */
-    @keyframes glow {
-      from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
-      to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.5); }
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .logo { font-size: 2.5rem; }
-      .tagline { font-size: 1.2rem; }
-      .subtitle { font-size: 1rem; }
-      .nav-container { position: relative; top: auto; transform: none; margin: 2rem auto; }
-      .info-content { grid-template-columns: 1fr; text-align: center; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .hero { min-height: 80vh; }
     }
   </style>
 </head>
 <body>
+  <!-- Barre de navigation dynamique -->
+  <nav class="nav-container">
+    <ul class="nav-menu" id="recentProjectsNav"></ul>
+  </nav>
+
   <!-- Hero Section -->
   <section class="hero">
-    <nav class="nav-container">
-      <ul class="nav-menu">
-        <li class="nav-item" data-project="avion">✈️ Avion</li>
-        <li class="nav-item" data-project="sub">🚢 Sous-marin</li>
-        <li class="nav-item" data-project="bateau">⛵ Bateau</li>
-        <li class="nav-item" data-project="electronique">🔧 Électronique</li>
-      </ul>
-    </nav>
-
-    <div class="hero-content">
-      <h1 class="logo">LABAMAT</h1>
-      <p class="tagline">Laboratoire des Amateurs</p>
-      <p class="subtitle">Conception • Budget • Autonomie • Assemblage • Bricolage</p>
-      <a href="#projets" class="cta-button">Découvrir nos projets</a>
-    </div>
+    <h1 class="logo">LABAMAT</h1>
+    <p class="tagline">Laboratoire des Amateurs</p>
+    <p class="subtitle">Conception • Budget • Autonomie • Assemblage • Bricolage</p>
+    <a href="#projets" class="cta-button">Découvrir nos projets</a>
   </section>
-
-  <!-- Info Box Interactive -->
-  <div class="info-box" id="infoBox">
-    <div class="info-content">
-      <img class="info-image" id="infoImg" src="" alt="Projet" />
-      <div class="info-text-content">
-        <h3 class="info-title" id="infoTitle"></h3>
-        <p class="info-description" id="infoText"></p>
-        <a class="info-link" id="infoLink" href="#">
-          Voir le projet →
-        </a>
-      </div>
-    </div>
-  </div>
 
   <!-- Section Projets -->
   <section class="projects-section" id="projets">
     <h2 class="section-title">Nos Projets</h2>
     <p class="section-subtitle">
-      Des créations innovantes alliant technique et passion, 
-      conçues pour les amateurs éclairés et les bricoleurs passionnés.
+      Des créations innovantes alliant technique et passion, conçues pour les amateurs éclairés et les bricoleurs passionnés.
     </p>
 
     <div class="projects-grid">
-      <div class="project-card">
+      <div class="project-card" data-category="avion">
         <div class="card-image">✈️</div>
         <div class="card-content">
           <h3 class="card-title">Maquettes Volantes</h3>
-          <p class="card-description">
-            Conception d'avions radiocommandés avec focus sur l'aérodynamique et la performance de vol.
-          </p>
+          <p class="card-description">Conception d'avions radiocommandés avec focus sur l'aérodynamique et la performance de vol.</p>
           <div class="card-tags">
             <span class="tag">Aérodynamique</span>
             <span class="tag">RC</span>
@@ -466,13 +240,11 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="sub">
         <div class="card-image">🚢</div>
         <div class="card-content">
           <h3 class="card-title">Sous-marins Autonomes</h3>
-          <p class="card-description">
-            Exploration des systèmes de propulsion sous-marine et technologies d'immersion contrôlée.
-          </p>
+          <p class="card-description">Exploration des systèmes de propulsion sous-marine et technologies d'immersion contrôlée.</p>
           <div class="card-tags">
             <span class="tag">Autonome</span>
             <span class="tag">Étanche</span>
@@ -481,13 +253,11 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="bateau">
         <div class="card-image">⛵</div>
         <div class="card-content">
           <h3 class="card-title">Modélisme Naval</h3>
-          <p class="card-description">
-            Bateaux télécommandés avec attention particulière à la stabilité et à la manœuvrabilité.
-          </p>
+          <p class="card-description">Bateaux télécommandés avec attention particulière à la stabilité et à la manœuvrabilité.</p>
           <div class="card-tags">
             <span class="tag">Naval</span>
             <span class="tag">Stabilité</span>
@@ -496,13 +266,11 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="electronique">
         <div class="card-image">🔧</div>
         <div class="card-content">
           <h3 class="card-title">Électronique Embarquée</h3>
-          <p class="card-description">
-            Systèmes de contrôle, capteurs et automatisation pour projets de modélisme avancé.
-          </p>
+          <p class="card-description">Systèmes de contrôle, capteurs et automatisation pour projets de modélisme avancé.</p>
           <div class="card-tags">
             <span class="tag">Arduino</span>
             <span class="tag">Capteurs</span>
@@ -515,106 +283,60 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-logo">LABAMAT</div>
-      <p>&copy; 2025 Laboratoire des Amateurs - Passion, Innovation, Partage</p>
-    </div>
+    <div class="footer-logo">LABAMAT</div>
+    <p>&copy; 2025 Laboratoire des Amateurs - Passion, Innovation, Partage</p>
   </footer>
 
+  <!-- Script -->
   <script>
-    // Données des projets
     const projectData = {
       avion: {
         title: "Maquettes Volantes",
-        text: "Conception d'avions radiocommandés avec un focus particulier sur l'aérodynamique, la performance de vol et l'optimisation des matériaux légers. Projets incluant plans détaillés, analyse des coûts et guides d'assemblage.",
         img: "https://images.unsplash.com/photo-1569629465608-e933b89968ba?w=400&h=250&fit=crop",
         link: "projets/avion.html"
       },
       sub: {
-        title: "Sous-marins Autonomes", 
-        text: "Exploration avancée des systèmes de propulsion sous-marine, technologies d'étanchéité et navigation autonome. Développement de prototypes avec système de ballast automatique et contrôle de profondeur.",
+        title: "Sous-marins Autonomes",
         img: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop",
         link: "projets/sous-marin.html"
       },
       bateau: {
         title: "Modélisme Naval",
-        text: "Bateaux télécommandés de haute précision avec attention particulière portée à la stabilité en milieu aquatique, à la manœuvrabilité et aux systèmes de propulsion efficaces. Inclut voiliers et bateaux à moteur.",
-        img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop", 
+        img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop",
         link: "projets/bateau.html"
       },
       electronique: {
         title: "Électronique Embarquée",
-        text: "Développement de systèmes de contrôle avancés, intégration de capteurs IoT et solutions d'automatisation pour projets de modélisme. Arduino, Raspberry Pi, télémétrie et contrôle à distance.",
         img: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop",
         link: "projets/electronique.html"
       }
     };
 
-    // Gestion de l'affichage des informations
-    function showProjectInfo(projectKey) {
-      const project = projectData[projectKey];
-      if (!project) return;
-
-      const infoBox = document.getElementById('infoBox');
-      const infoTitle = document.getElementById('infoTitle');
-      const infoImg = document.getElementById('infoImg');
-      const infoText = document.getElementById('infoText');
-      const infoLink = document.getElementById('infoLink');
-
-      infoTitle.textContent = project.title;
-      infoImg.src = project.img;
-      infoText.textContent = project.text;
-      infoLink.href = project.link;
-
-      infoBox.style.display = 'block';
-      setTimeout(() => {
-        infoBox.classList.add('show');
-      }, 10);
-    }
-
-    function hideProjectInfo() {
-      const infoBox = document.getElementById('infoBox');
-      infoBox.classList.remove('show');
-      setTimeout(() => {
-        infoBox.style.display = 'none';
-      }, 400);
-    }
-
-    // Configuration des événements
-    document.addEventListener('DOMContentLoaded', function() {
-      const navItems = document.querySelectorAll('.nav-item');
-      const infoBox = document.getElementById('infoBox');
-      let hoverTimeout;
-
-      navItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-          clearTimeout(hoverTimeout);
-          const projectKey = this.dataset.project;
-          showProjectInfo(projectKey);
-        });
-
-        item.addEventListener('mouseleave', function() {
-          hoverTimeout = setTimeout(() => {
-            hideProjectInfo();
-          }, 300);
-        });
+    // Générer la barre de navigation avec les projets récents
+    const recentProjectsNav = document.getElementById('recentProjectsNav');
+    Object.entries(projectData).forEach(([key, project]) => {
+      const li = document.createElement('li');
+      li.className = 'nav-item';
+      li.textContent = project.title;
+      li.addEventListener('click', () => {
+        window.location.href = project.link;
       });
+      recentProjectsNav.appendChild(li);
+    });
 
-      // Maintenir la box ouverte quand on survole l'info-box
-      infoBox.addEventListener('mouseenter', function() {
-        clearTimeout(hoverTimeout);
+    // Redirection vers la page de catégorie au clic sur une carte
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const category = card.dataset.category;
+        window.location.href = `categorie.html?type=${category}`;
       });
+    });
 
-      infoBox.addEventListener('mouseleave', function() {
-        hideProjectInfo();
-      });
-
-      // Smooth scroll pour le bouton CTA
-      document.querySelector('.cta-button').addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector('#projets').scrollIntoView({
-          behavior: 'smooth'
-        });
+    // Smooth scroll pour le bouton CTA
+    document.querySelector('.cta-button').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#projets').scrollIntoView({
+        behavior: 'smooth'
       });
     });
   </script>

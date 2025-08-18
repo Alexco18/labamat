@@ -1,281 +1,190 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <title>LABAMAT | Laboratoire des Amateurs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LABAMAT - Laboratoire des Amateurs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    :root {
-      --primary: #0066cc;
-      --primary-dark: #004499;
-      --accent: #ff6b35;
-      --dark: #1a1a2e;
-      --light: #f8fafc;
-      --gray-100: #f1f5f9;
-      --gray-200: #e2e8f0;
-      --gray-600: #475569;
-      --text: #334155;
-      --gradient-bg: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
     }
 
-    .hero {
-      background: var(--gradient-bg);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0077b6;
       color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+    }
+
+    nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    nav ul li:hover {
+      color: #90e0ef;
+    }
+
+    header {
+      background: linear-gradient(to right, #0077b6, #00b4d8);
+      color: white;
+      padding: 100px 20px 60px;
       text-align: center;
-      padding: 2rem;
     }
 
-    .logo {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(45deg, #ffffff, #e0e7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
     }
 
-    .tagline { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .subtitle { font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; }
+    header p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
 
     .cta-button {
-      background: var(--accent);
-      color: white;
-      padding: 1rem 2.5rem;
+      background-color: white;
+      color: #0077b6;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
       text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: 0.3s;
     }
 
     .cta-button:hover {
-      background: #ff875c;
-      transform: translateY(-2px);
+      background-color: #caf0f8;
     }
 
-    .nav-container {
-      position: fixed;
-      top: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 50px;
-      padding: 0.5rem;
-    }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 0.5rem;
-    }
-
-    .nav-item {
-      cursor: pointer;
-      padding: 0.75rem 1.5rem;
-      color: white;
-      font-weight: 500;
-      border-radius: 25px;
-      transition: 0.3s;
-    }
-
-    .nav-item:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.05);
-    }
-
-    .projects-section {
-      padding: 6rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+    section {
+      padding: 60px 20px;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--gray-600);
-      margin-bottom: 4rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 2em;
+      margin-bottom: 40px;
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .project-card {
-      background: white;
-      border-radius: 15px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      transition: 0.3s;
-      border: 1px solid var(--gray-200);
       cursor: pointer;
+      transition: transform 0.3s;
     }
 
     .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
     }
 
-    .card-image {
-      height: 200px;
-      background: var(--gradient-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 3rem;
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
     }
 
-    .card-content {
-      padding: 1.5rem;
+    .project-card .card-content {
+      padding: 20px;
     }
 
-    .card-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .card-description {
-      color: var(--gray-600);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .card-tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      background: var(--gray-100);
-      color: var(--gray-600);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
+    .project-card .card-content h3 {
+      margin: 0;
+      font-size: 1.3em;
     }
 
     footer {
-      background: var(--dark);
+      background-color: #0077b6;
       color: white;
-      padding: 3rem 2rem;
       text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
     }
 
-    .footer-logo {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(45deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .cta-button {
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Barre de navigation dynamique -->
-  <nav class="nav-container">
-    <ul class="nav-menu" id="recentProjectsNav"></ul>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">LABAMAT</div>
+    <ul id="recentProjectsNav"></ul>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <h1 class="logo">LABAMAT</h1>
-    <p class="tagline">Laboratoire des Amateurs</p>
-    <p class="subtitle">Conception • Budget • Autonomie • Assemblage • Bricolage</p>
-    <a href="#projets" class="cta-button">Découvrir nos projets</a>
-  </section>
+  <header>
+    <h1>Laboratoire des Amateurs</h1>
+    <p>Explorez nos projets passionnants dans l'univers du modélisme et de l'innovation</p>
+    <a href="#projets" class="cta-button">Voir les projets</a>
+  </header>
 
-  <!-- Section Projets -->
-  <section class="projects-section" id="projets">
+  <!-- Projets -->
+  <section id="projets">
     <h2 class="section-title">Nos Projets</h2>
-    <p class="section-subtitle">
-      Des créations innovantes alliant technique et passion, conçues pour les amateurs éclairés et les bricoleurs passionnés.
-    </p>
-
     <div class="projects-grid">
       <div class="project-card" data-category="avion">
-        <div class="card-image">✈️</div>
+        <img src="https://images.unsplash.com/photo-1569629465608-e933b89968ba?w=400&h=250&fit=crop" alt="Maquettes Volantes">
         <div class="card-content">
-          <h3 class="card-title">Maquettes Volantes</h3>
-          <p class="card-description">Conception d'avions radiocommandés avec focus sur l'aérodynamique et la performance de vol.</p>
-          <div class="card-tags">
-            <span class="tag">Aérodynamique</span>
-            <span class="tag">RC</span>
-            <span class="tag">DIY</span>
-          </div>
+          <h3>Maquettes Volantes</h3>
         </div>
       </div>
-
       <div class="project-card" data-category="sub">
-        <div class="card-image">🚢</div>
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop" alt="Sous-marins">
         <div class="card-content">
-          <h3 class="card-title">Sous-marins Autonomes</h3>
-          <p class="card-description">Exploration des systèmes de propulsion sous-marine et technologies d'immersion contrôlée.</p>
-          <div class="card-tags">
-            <span class="tag">Autonome</span>
-            <span class="tag">Étanche</span>
-            <span class="tag">Innovation</span>
-          </div>
+          <h3>Sous-marins Autonomes</h3>
         </div>
       </div>
-
       <div class="project-card" data-category="bateau">
-        <div class="card-image">⛵</div>
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop" alt="Bateaux">
         <div class="card-content">
-          <h3 class="card-title">Modélisme Naval</h3>
-          <p class="card-description">Bateaux télécommandés avec attention particulière à la stabilité et à la manœuvrabilité.</p>
-          <div class="card-tags">
-            <span class="tag">Naval</span>
-            <span class="tag">Stabilité</span>
-            <span class="tag">RC</span>
-          </div>
+          <h3>Modélisme Naval</h3>
         </div>
       </div>
-
       <div class="project-card" data-category="electronique">
-        <div class="card-image">🔧</div>
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop" alt="Électronique">
         <div class="card-content">
-          <h3 class="card-title">Électronique Embarquée</h3>
-          <p class="card-description">Systèmes de contrôle, capteurs et automatisation pour projets de modélisme avancé.</p>
-          <div class="card-tags">
-            <span class="tag">Arduino</span>
-            <span class="tag">Capteurs</span>
-            <span class="tag">Automatisation</span>
-          </div>
+          <h3>Électronique Embarquée</h3>
         </div>
       </div>
     </div>
@@ -283,8 +192,10 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-logo">LABAMAT</div>
-    <p>&copy; 2025 Laboratoire des Amateurs - Passion, Innovation, Partage</p>
+    <div class="footer-content">
+      <div class="footer-logo">LABAMAT</div>
+      <p>&copy; 2025 Laboratoire des Amateurs - Passion, Innovation, Partage</p>
+    </div>
   </footer>
 
   <!-- Script -->
@@ -312,7 +223,7 @@
       }
     };
 
-    // Générer la barre de navigation avec les projets récents
+    // Générer la barre de navigation
     const recentProjectsNav = document.getElementById('recentProjectsNav');
     Object.entries(projectData).forEach(([key, project]) => {
       const li = document.createElement('li');
@@ -324,11 +235,11 @@
       recentProjectsNav.appendChild(li);
     });
 
-    // Redirection vers la page de catégorie au clic sur une carte
+    // Redirection au clic sur une carte
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', () => {
         const category = card.dataset.category;
-        window.location.href = `categorie.html?type=${category}`;
+        window.location.href = `projets/${category}.html`;
       });
     });
 
@@ -338,6 +249,23 @@
       document.querySelector('#projets').scrollIntoView({
         behavior: 'smooth'
       });
+    });
+
+    // Effet de disparition de la barre de navigation
+    const navbar = document.querySelector('nav');
+    const projetsSection = document.getElementById('projets');
+
+    window.addEventListener('scroll', () => {
+      const projetsTop = projetsSection.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (projetsTop < windowHeight / 1.2) {
+        const opacity = Math.max(0, projetsTop / (windowHeight / 1.2));
+                navbar.style.opacity = opacity;
+        navbar.style.transition = 'opacity 0.3s ease';
+      } else {
+        navbar.style.opacity = 1;
+      }
     });
   </script>
 </body>

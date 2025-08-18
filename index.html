@@ -17,7 +17,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #0077b6;
+      background-color: transparent;
       color: white;
       display: flex;
       justify-content: space-between;
@@ -260,8 +260,8 @@
       const windowHeight = window.innerHeight;
 
       if (projetsTop < windowHeight / 1.2) {
-        const opacity = Math.max(0, projetsTop / (windowHeight / 1.2));
-                navbar.style.opacity = opacity;
+                const opacity = Math.max(0, projetsTop / (windowHeight / 1.2));
+        navbar.style.opacity = opacity;
         navbar.style.transition = 'opacity 0.3s ease';
       } else {
         navbar.style.opacity = 1;

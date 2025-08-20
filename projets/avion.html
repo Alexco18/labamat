@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projet Drone - LABAMAT</title>
+  <title>Projet Bateau - LABAMAT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,6 +36,7 @@
       line-height: 1.6;
     }
 
+    /* Header */
     .project-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -81,6 +82,7 @@
       color: var(--gray-600);
     }
 
+    /* Hero Section */
     .project-hero {
       background: var(--gradient-bg);
       padding: 4rem 2rem;
@@ -146,6 +148,7 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
+    /* Main Content */
     .project-main {
       max-width: 1200px;
       margin: 0 auto;
@@ -189,6 +192,7 @@
       line-height: 1.7;
     }
 
+    /* Specs Grid */
     .specs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -229,6 +233,7 @@
       line-height: 1.6;
     }
 
+    /* Media Gallery */
     .media-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -249,110 +254,360 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
 
+    .media-item img,
+    .media-item video {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
     .media-placeholder {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(135deg, #ccc, #eee);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-style: italic;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-
-  .step {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .step-number {
-    background: var(--gradient-bg);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-right: 10px;
-  }
-
-  .step-description {
-    font-size: 1em;
-    color: #333;
-  }
-
-  form {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  input, textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1em;
-    width: 100%;
-  }
-
-  button {
-    background: var(--gradient-bg);
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  button:hover {
-    background: linear-gradient(135deg, #0055aa, #00ccff);
-  }
-
-  footer {
-    background: #222;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-  }
-
-  .footer-logo {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  @media screen and (max-width: 768px) {
-    header h1 {
-      font-size: 2em;
-    }
-
-    .project {
-      flex-direction: column;
+      width: 100%;
+      height: 250px;
+      background: var(--gradient-bg);
+      display: flex;
       align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 500;
     }
 
-    .project img {
-      max-width: 100%;
-      margin-bottom: 15px;
+    /* Process Steps */
+    .process-steps {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
     .step {
-      flex-direction: column;
-      align-items: flex-start;
+      display: flex;
+      align-items: start;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--gray-100);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .step:hover {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .step-number {
-      margin-bottom: 10px;
+      background: var(--gradient-bg);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
     }
-  }
-</style>
+
+    .step-content h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+      color: var(--gray-600);
+      margin: 0;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: var(--gray-100);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .submit-btn {
+      background: var(--gradient-bg);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem 2rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .project-nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .project-title { font-size: 2rem; }
+      .project-subtitle { font-size: 1.1rem; }
+      .project-tags { justify-content: center; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .media-gallery { grid-template-columns: 1fr; }
+      
+      .step {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Header avec navigation -->
+<header class="project-header">
+  <nav class="project-nav">
+    <a href="../index.html" class="nav-back">← Retour à l'accueil</a>
+    <div class="nav-logo">LABAMAT</div>
+    <div class="nav-category">Modélisme Aérien</div>
+  </nav>
+</header>
+
+<!-- Hero du projet -->
+<section class="project-hero">
+  <div class="project-hero-content">
+    <div class="project-icon">🛸</div>
+    <h1 class="project-title">Drone Modélisé</h1>
+    <p class="project-subtitle">Conception de drone radiocommandé avec focus sur la stabilité et la maniabilité</p>
+    <div class="project-tags">
+      <span class="tag">Aérien</span>
+      <span class="tag">RC</span>
+      <span class="tag">Stabilité</span>
+      <span class="tag">Échelle 1:10</span>
+    </div>
+  </div>
+</section>
+
+  <!-- Contenu principal -->
+  <main class="project-main">
+    
+ <!-- Section Description -->
+<section class="project-section">
+  <h2 class="section-title">🎯 Description du Projet</h2>
+  <div class="section-content">
+    <p>
+      Ce drone modélisé à l’échelle 1:10 est conçu pour offrir une expérience de vol stable et précise. Sa structure légère en fibre de carbone et son système de propulsion brushless permettent des manœuvres agiles et une autonomie prolongée.
+    </p>
+    <p>
+      Le projet intègre un contrôleur de vol programmable, des capteurs de stabilisation, et une radiocommande à longue portée. Chaque composant est sélectionné pour optimiser la performance en vol et la sécurité.
+    </p>
+  </div>
+</section>
+
+<!-- Section Spécifications Techniques -->
+<section class="project-section">
+  <h2 class="section-title">📊 Spécifications Techniques</h2>
+  <div class="specs-grid">
+    <div class="spec-card">
+      <div class="spec-icon">📏</div>
+      <h3>Dimensions</h3>
+      <p>
+        Envergure : 45 cm<br>
+        Hauteur : 12 cm<br>
+        Poids : 1,2 kg
+      </p>
+    </div>
+    <div class="spec-card">
+      <div class="spec-icon">🏗️</div>
+      <h3>Matériaux</h3>
+      <p>
+        Châssis : Fibre de carbone<br>
+        Hélices : Nylon renforcé<br>
+        Carénage : ABS léger
+      </p>
+    </div>
+    <div class="spec-card">
+      <div class="spec-icon">⚡</div>
+      <h3>Propulsion</h3>
+      <p>
+        Moteurs : Brushless 2205<br>
+        Contrôle : ESC 30A + contrôleur de vol<br>
+        Autonomie : 15-20 minutes<br>
+        Portée : 500 mètres
+      </p>
+    </div>
+    <div class="spec-card">
+      <div class="spec-icon">💰</div>
+      <h3>Budget</h3>
+      <p>
+        Matériaux : 100-150€<br>
+        Électronique : 120-180€<br>
+        Outils spécialisés : 40€<br>
+        Total : ~300€
+      </p>
+    </div>
+  </div>
+</section>
+
+    <!-- Section Photos & Vidéos -->
+    <section class="project-section">
+      <h2 class="section-title">📸 Photos & Vidéos</h2>
+      <div class="media-gallery">
+        <div class="media-item">
+          <div class="media-placeholder">Vue latérale de la maquette</div>
+        </div>
+        <div class="media-item">
+          <div class="media-placeholder">Vue de dessus - Pont détaillé</div>
+        </div>
+        <div class="media-item">
+          <div class="media-placeholder">Système de gréement</div>
+        </div>
+        <div class="media-item">
+          <div class="media-placeholder">Test en bassin - Vidéo</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Processus de Montage -->
+<section class="project-section">
+  <h2 class="section-title">🔧 Processus de Montage</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Préparation du châssis</h3>
+        <p>Découpe et assemblage des bras du drone. Installation des supports moteurs et vérification de l’équilibre structurel.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Installation des moteurs</h3>
+        <p>Fixation des moteurs brushless, câblage des ESC et montage des hélices. Vérification du sens de rotation.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Électronique embarquée</h3>
+        <p>Montage du contrôleur de vol, du récepteur radio et des capteurs. Configuration initiale via logiciel dédié.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>Tests et calibrage</h3>
+        <p>Calibration des capteurs, test de portée radio, vérification des PID et essais en vol en environnement sécurisé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Section Demande de devis -->
+    <section class="project-section">
+      <h2 class="section-title">📋 Demande de Devis & Contact</h2>
+      <p>Interessé par ce projet ? Contactez-nous pour recevoir le plan détaillé, la liste des matériaux et un devis personnalisé.</p>
+      
+      <div class="contact-form">
+        <form action="mailto:atelier@labamat.fr" method="post" enctype="text/plain">
+          <div class="form-group">
+            <label for="nom">Nom complet</label>
+            <input type="text" id="nom" name="nom" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="projet">Type de projet souhaité</label>
+            <select id="projet" name="projet" style="width: 100%; padding: 0.8rem 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem;">
+              <option>Plans complets + liste matériaux</option>
+              <option>Kit de pièces pré-découpées</option>
+              <option>Maquette assemblée prête à naviguer</option>
+              <option>Formation assemblage personnalisée</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message / Questions spécifiques</label>
+            <textarea id="message" name="message" rows="5" placeholder="Décrivez vos attentes, votre niveau d'expérience, ou toute question spécifique..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Envoyer la demande 📤
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">LABAMAT</div>
+    <p>&copy; 2025 Laboratoire des Amateurs - Passion, Innovation, Partage</p>
+  </footer>
+</body>
+</html>

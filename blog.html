@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Communauté - LABAMAT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .blog-header {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .blog-header h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .blog-header p {
+      margin: 0 0 2rem 0;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .back-button {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 12px 24px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .back-button:hover {
+      background: rgba(255,255,255,0.3);
+      border-color: #ffb703;
+      color: #ffb703;
+    }
+
+    /* Container principal */
+    .blog-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 3rem;
+    }
+
+    /* Section des commentaires */
+    .comments-section {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: #0077b6;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Formulaire de commentaire */
+    .comment-form {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #0077b6;
+      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 119, 182, 0.3);
+    }
+
+    /* Liste des commentaires */
+    .comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .comment {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid #0077b6;
+      transition: all 0.3s ease;
+    }
+
+    .comment:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .comment-author {
+      font-weight: 600;
+      color: #0077b6;
+      font-size: 1.1rem;
+    }
+
+    .comment-date {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .comment-content {
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .comment-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .comment-btn {
+      background: none;
+      border: 1px solid #e2e8f0;
+      color: #64748b;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .comment-btn:hover {
+      background: #0077b6;
+      color: white;
+      border-color: #0077b6;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .sidebar-widget {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .widget-title {
+      font-size: 1.3rem;
+      color: #0077b6;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+      background: #f8fafc;
+      border-radius: 8px;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0077b6;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .recent-topics {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .topic-item {
+      padding: 0.8rem;
+      background: #f8fafc;
+      border-radius: 8px;
+      border-left: 3px solid #ffb703;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .topic-item:hover {
+      background: #e2e8f0;
+    }
+
+    .topic-title {
+      font-weight: 600;
+      color: #334155;
+      font-size: 0.9rem;
+    }
+
+    .topic-author {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 0.2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1rem;
+      }
+
+      .blog-header h1 {
+        font-size: 2rem;
+      }
+
+      .blog-header p {
+        font-size: 1rem;
+      }
+    }
+
+    /* Animation d'apparition */
+    .comment {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="blog-header">
+    <h1>📝 Blog Communauté LABAMAT</h1>
+    <p>Partagez vos expériences, posez vos questions et échangez avec la communauté !</p>
+    <a href="index.html" class="back-button">← Retour à l'accueil</a>
+  </header>
+
+  <!-- Container principal -->
+  <div class="blog-container">
+    <!-- Section principale - Commentaires -->
+    <main class="comments-section">
+      <h2 class="section-title">💬 Vos Messages</h2>
+      
+      <!-- Formulaire de nouveau commentaire -->
+      <div class="comment-form">
+        <h3>Laisser un message</h3>
+        <form id="commentForm">
+          <div class="form-group">
+            <label for="name">Nom / Pseudo</label>
+            <input type="text" id="name" name="name" required placeholder="Votre nom ou pseudo">
+          </div>
+          <div class="form-group">
+            <label for="email">Email (optionnel)</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.fr">
+          </div>
+          <div class="form-group">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" required placeholder="Partagez votre expérience, posez une question, ou donnez votre avis..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Publier le message 📤</button>
+        </form>
+      </div>
+
+      <!-- Liste des commentaires -->
+      <div class="comments-list" id="commentsList">
+        <!-- Commentaires par défaut pour exemple -->
+        <div class="comment">
+          <div class="comment-header">
+            <span class="comment-author">👤 Antoine_Maker</span>
+            <span class="comment-date">Il y a 2 jours</span>
+          </div>
+          <div class="comment-content">
+            Excellent travail sur le drone ! J'aimerais savoir quel type de contrôleur de vol vous utilisez ? Je débute dans ce domaine et vos projets m'inspirent beaucoup 🚀
+          </div>
+          <div class="comment-actions">
+            <button class="comment-btn">👍 5</button>
+            <button class="comment-btn">💬 Répondre</button>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-header">
+            <span class="comment-author">⚓ Marine_Passion</span>
+            <span class="comment-date">Il y a 3 jours</span>
+          </div>
+          <div class="comment-content">
+            La frégate est magnifique ! Est-ce que les plans 3D seront bientôt disponibles ? J'ai une imprimante 3D et j'aimerais me lancer dans ce projet.
+          </div>
+          <div class="comment-actions">
+            <button class="comment-btn">👍 8</button>
+            <button class="comment-btn">💬 Répondre</button>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-header">
+            <span class="comment-author">🔧 ElectroMax</span>
+            <span class="comment-date">Il y a 5 jours</span>
+          </div>
+          <div class="comment-content">
+            Super initiative ce blog ! Continuez comme ça, vos tutoriels sont très clairs et bien détaillés. Hâte de voir le prochain projet 👏
+          </div>
+          <div class="comment-actions">
+            <button class="comment-btn">👍 12</button>
+            <button class="comment-btn">💬 Répondre</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Statistiques -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">📊 Statistiques</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">47</div>
+            <div class="stat-label">Messages</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">23</div>
+            <div class="stat-label">Membres</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">156</div>
+            <div class="stat-label">J'aime</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Projets</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sujets populaires -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">🔥 Sujets Populaires</h3>
+        <div class="recent-topics">
+          <div class="topic-item">
+            <div class="topic-title">Problème de stabilisation drone</div>
+            <div class="topic-author">par TechGuru - 12 réponses</div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-title">Impression 3D : quel filament ?</div>
+            <div class="topic-author">par PrinterPro - 8 réponses</div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-title">Étanchéité sous-marin</div>
+            <div class="topic-author">par AquaTech - 15 réponses</div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-title">Budget pour débuter</div>
+            <div class="topic-author">par Newbie_2025 - 6 réponses</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Règles de la communauté -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">📋 Règles</h3>
+        <div style="font-size: 0.9rem; color: #64748b; line-height: 1.6;">
+          <p>• Respectez les autres membres</p>
+          <p>• Pas de contenu inapproprié</p>
+          <p>• Restez dans le thème</p>
+          <p>• Partagez vos connaissances</p>
+          <p>• Amusez-vous ! 😊</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // Gestion du formulaire de commentaires
+    document.getElementById('commentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const message = document.getElementById('message').value;
+      
+      if (name.trim() && message.trim()) {
+        addComment(name, message);
+        
+        // Réinitialiser le formulaire
+        this.reset();
+        
+        // Message de confirmation
+        alert('Merci pour votre message ! Il sera publié après modération. 😊');
+      }
+    });
+
+    function addComment(author, content) {
+      const commentsList = document.getElementById('commentsList');
+      const now = new Date();
+      const timeAgo = 'À l\'instant';
+      
+      const commentHTML = `
+        <div class="comment">
+          <div class="comment-header">
+            <span class="comment-author">👤 ${author}</span>
+            <span class="comment-date">${timeAgo}</span>
+          </div>
+          <div class="comment-content">
+            ${content}
+          </div>
+          <div class="comment-actions">
+            <button class="comment-btn">👍 0</button>
+            <button class="comment-btn">💬 Répondre</button>
+          </div>
+        </div>
+      `;
+      
+      commentsList.insertAdjacentHTML('afterbegin', commentHTML);
+      
+      // Mettre à jour les statistiques
+      updateStats();
+    }
+
+    function updateStats() {
+      const statsNumbers = document.querySelectorAll('.stat-number');
+      if (statsNumbers[0]) {
+        let currentCount = parseInt(statsNumbers[0].textContent);
+        statsNumbers[0].textContent = currentCount + 1;
+      }
+    }
+
+    // Gestion des boutons J'aime (simulation)
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('comment-btn') && e.target.textContent.includes('👍')) {
+        let currentLikes = parseInt(e.target.textContent.replace('👍 ', ''));
+        e.target.textContent = `👍 ${currentLikes + 1}`;
+        e.target.style.background = '#0077b6';
+        e.target.style.color = 'white';
+        e.target.disabled = true;
+      }
+    });
+
+    // Animation d'entrée pour les commentaires existants
+    window.addEventListener('load', () => {
+      const comments = document.querySelectorAll('.comment');
+      comments.forEach((comment, index) => {
+        comment.style.opacity = '0';
+        comment.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          comment.style.transition = 'all 0.5s ease';
+          comment.style.opacity = '1';
+          comment.style.transform = 'translateY(0)';
+        }, index * 200);
+      });
+    });
+  </script>
+</body>
+</html>

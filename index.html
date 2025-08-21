@@ -126,6 +126,24 @@
       font-size: 1.3em;
     }
 
+    #presentation p,
+    #offres p,
+    #liens p {
+      font-size: 1em;
+      color: #555;
+    }
+
+    #liens a {
+      color: #0077b6;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    #liens a:hover {
+      color: #fb8500;
+    }
+
     footer {
       background-color: #0077b6;
       color: white;
@@ -163,6 +181,17 @@
     <a href="#projets" class="cta-button">Voir les projets</a>
   </header>
 
+  <!-- Présentation -->
+  <section id="presentation">
+    <h2 class="section-title">À propos de LABAMAT</h2>
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <p>
+        LABAMAT est un collectif passionné dédié au modélisme, à l’innovation technologique et à la création DIY. 
+        Nous explorons les mondes de l’aéronautique, du naval, de la robotique et de l’électronique embarquée, avec une approche accessible et collaborative.
+      </p>
+    </div>
+  </section>
+
   <!-- Projets -->
   <section id="projets">
     <h2 class="section-title">Nos Projets</h2>
@@ -194,6 +223,42 @@
     </div>
   </section>
 
+  <!-- Offres -->
+  <section id="offres">
+    <h2 class="section-title">Nos Offres</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="card-content">
+          <h3>Vente de modèles finis</h3>
+          <p>Maquettes prêtes à naviguer ou voler, testées et optimisées.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="card-content">
+          <h3>Pièces détachées & kits</h3>
+          <p>Composants électroniques, coques, moteurs et plans CAO.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="card-content">
+          <h3>Services personnalisés</h3>
+          <p>Conception sur mesure, modélisation 3D et accompagnement technique.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liens -->
+  <section id="liens">
+    <h2 class="section-title">Retrouvez-nous</h2>
+    <div style="text-align: center;">
+      <p><a href="https://www.instagram.com/tonprofil" target="_blank">📸 Instagram</a></p>
+      <p><a href="https://www.vinted.fr/member/tonprofil" target="_blank">🧥 Vinted</a></p>
+      <p><a href="https://www.leboncoin.fr/profil/tonprofil" target="_blank">📦 Leboncoin</a></p>
+      <p><a href="https://tonsite.fr/telechargements" target="_blank">📁 Télécharger les fichiers CAO</a></p>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="footer-content">
@@ -202,7 +267,7 @@
   </footer>
 
   <!-- Script -->
-  <script>
+    <script>
     const projectData = {
       avion: {
         title: "Maquettes Volantes",

@@ -10,40 +10,125 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: #f9f9f9;
       color: #333;
+    footer {
+      background-color: #0077b6;
+
+    /* Menu Hamburger Circulaire */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
     }
 
-    nav {
+    .menu-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 2px 0;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Menu de Navigation */
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100vh;
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      padding-top: 100px;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.3);
+    }
+
+    .nav-menu.active {
+      right: 0;
+    }
+
+    .nav-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0 30px;
+    }
+
+    .nav-menu ul li {
+      margin: 0;
+    }
+
+    .nav-menu ul li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      font-weight: 500;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      border-radius: 10px;
+      border-left: 3px solid transparent;
+    }
+
+    .nav-menu ul li a:hover {
+      background: rgba(255,255,255,0.15);
+      color: #ffb703;
+      border-left-color: #ffb703;
+      padding-left: 25px;
+    }
+
+    /* Overlay pour fermer le menu */
+    .overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px 0;
-      z-index: 1000;
-      transition: opacity 0.3s ease;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      padding: 0;
-      margin: 0;
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
 
-    nav ul li {
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
 
-    nav ul li:hover {
-      color: #ffb703;
-    }
 
     header {
       background: linear-gradient(to right, #0077b6, #00b4d8);
@@ -85,16 +170,16 @@
     }
 
     section {
-      padding: 60px 20px;
+      padding: 30px 20px; /* Réduit de 60px à 30px */
     }
 
     .section-box {
       background-color: white;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      padding: 60px;
+      padding: 40px; /* Réduit de 60px à 40px */
       max-width: 1000px;
-      margin: 80px auto;
+      margin: 20px auto; /* Réduit de 80px à 20px pour l'espacement vertical */
     }
 
     .section-box h2 {
@@ -144,8 +229,17 @@
     }
 
     .card-content h3 {
-      margin: 0;
+      margin: 0 0 10px 0;
       font-size: 1.3em;
+      color: #0077b6;
+      font-weight: 600;
+    }
+
+    .card-description {
+      font-size: 0.9em;
+      color: #666;
+      line-height: 1.4;
+      margin-top: 8px;
     }
 
     .section-links {
@@ -176,12 +270,163 @@
       object-fit: contain;
     }
 
-    footer {
-      background-color: #0077b6;
+    /* Chatbot Styles */
+    .chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .chatbot-toggle {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #ffb703, #fb8500);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 183, 3, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 24px;
+    }
+
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(255, 183, 3, 0.4);
+    }
+
+    .chatbot-window {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      width: 350px;
+      height: 500px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    .chatbot-window.active {
+      display: flex;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      padding: 15px 20px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chatbot-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .chatbot-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 15px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .message.bot {
+      background: #f1f5f9;
+      color: #334155;
+      align-self: flex-start;
+      border-bottom-left-radius: 5px;
+    }
+
+    .message.user {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 5px;
+    }
+
+    .quick-actions {
+      padding: 15px 20px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-action {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      padding: 8px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quick-action:hover {
+      background: #0077b6;
+      color: white;
+      border-color: #0077b6;
+    }
+
+    /* Compteur de visites */
+    .visitor-counter {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 0.9em;
+      border-top: 3px solid #ffb703;
+    }
+
+    .visitor-counter .counter-icon {
+      font-size: 1.2em;
+      margin-right: 8px;
+    }
+
+    .visitor-counter .counter-number {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #ffb703;
+    }
       color: white;
       text-align: center;
       padding: 30px 20px;
-      margin-top: 60px;
+      margin-top: 30px; /* Réduit de 60px à 30px */
     }
 
     @media (max-width: 1000px) {
@@ -193,6 +438,15 @@
       .project-card {
         flex: 0 0 45%;
         margin-bottom: 20px;
+      }
+
+      .nav-menu {
+        width: 350px;
+        right: -350px;
+      }
+
+      .chatbot-window {
+        width: 320px;
       }
     }
 
@@ -213,12 +467,39 @@
       .project-card {
         flex: 0 0 100%;
       }
+
+      .nav-menu {
+        width: 300px;
+        right: -300px;
+      }
+
+      .chatbot-window {
+        width: calc(100vw - 40px);
+        right: -10px;
+      }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <ul id="recentProjectsNav"></ul>
+  <!-- Menu Hamburger Circulaire -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Menu de Navigation -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="#presentation" data-section="presentation">🏠 À propos</a></li>
+      <li><a href="#projets" data-section="projets">🚀 Nos Projets</a></li>
+      <li><a href="#offres" data-section="offres">💼 Nos Offres</a></li>
+      <li><a href="#blog" data-section="blog">📝 Blog Communauté</a></li>
+      <li><a href="#liens" data-section="liens">🔗 Nous Suivre</a></li>
+    </ul>
   </nav>
 
   <header>
@@ -230,8 +511,8 @@
   <section id="presentation" class="section-box">
     <h2>À propos de LABAMAT</h2>
     <p>
-      LABAMAT est un collectif passionné dédié au modélisme, à l’innovation technologique et à la création DIY. 
-      Nous explorons les mondes de l’aéronautique, du naval, de la robotique et de l’électronique embarquée, avec une approche accessible et collaborative.
+      LABAMAT est un collectif passionné dédié au modélisme, à l'innovation technologique et à la création DIY. 
+      Nous explorons les mondes de l'aéronautique, du naval, de la robotique et de l'électronique embarquée, avec une approche accessible et collaborative.
     </p>
   </section>
 
@@ -242,24 +523,28 @@
         <img src="https://images.unsplash.com/photo-1569629465608-e933b89968ba?w=400&h=250&fit=crop" alt="Maquettes Volantes">
         <div class="card-content">
           <h3>Maquettes Volantes</h3>
+          <p class="card-description">Drones et avions RC haute performance avec système de stabilisation avancé et contrôle précis.</p>
         </div>
       </div>
       <div class="project-card" data-category="sub">
         <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop" alt="Sous-marins">
         <div class="card-content">
           <h3>Sous-marins Autonomes</h3>
+          <p class="card-description">Sous-marins télécommandés étanches avec navigation autonome et caméra embarquée.</p>
         </div>
       </div>
       <div class="project-card" data-category="bateau">
         <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop" alt="Bateaux">
         <div class="card-content">
           <h3>Modélisme Naval</h3>
+          <p class="card-description">Répliques fidèles de navires militaires français avec détails authentiques et motorisation électrique.</p>
         </div>
       </div>
       <div class="project-card" data-category="electronique">
         <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop" alt="Électronique">
         <div class="card-content">
           <h3>Électronique Embarquée</h3>
+          <p class="card-description">Systèmes électroniques sur mesure : cartes Arduino, capteurs IoT et solutions connectées.</p>
         </div>
       </div>
     </div>
@@ -269,10 +554,21 @@
     <h2>Nos Offres</h2>
     <p>
       LABAMAT propose plusieurs services pour les amateurs et les passionnés : vente de modèles finis testés et optimisés, kits de pièces détachées imprimables ou assemblables, ainsi que des prestations sur mesure en modélisation 3D, conception électronique et accompagnement technique. 
-      Chaque offre est pensée pour rendre l’innovation accessible, fonctionnelle et durable.
+      Chaque offre est pensée pour rendre l'innovation accessible, fonctionnelle et durable.
     </p>
     <div style="text-align: right; margin-top: 30px;">
       <a href="offres.html" class="cta-button">Découvrir nos offres</a>
+    </div>
+  </section>
+
+  <section id="blog" class="section-box">
+    <h2>Blog Communauté</h2>
+    <p>
+      Partagez vos expériences, posez vos questions et échangez avec la communauté LABAMAT ! 
+      Notre espace blog vous permet de laisser des commentaires, partager vos réalisations et découvrir les créations d'autres passionnés.
+    </p>
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="blog.html" class="cta-button">Accéder au Blog 📝</a>
     </div>
   </section>
 
@@ -280,7 +576,7 @@
     <h2>Retrouvez-nous</h2>
     <p>
       Vous pouvez suivre nos projets, accéder à nos fichiers, ou découvrir nos offres sur différentes plateformes. 
-            Voici les liens utiles pour explorer l’univers LABAMAT :
+      Voici les liens utiles pour explorer l'univers LABAMAT :
     </p>
     <div class="section-links">
       <a href="https://www.instagram.com/tonprofil" target="_blank">
@@ -301,6 +597,34 @@
       </a>
     </div>
   </section>
+
+  <!-- Chatbot -->
+  <div class="chatbot-container">
+    <button class="chatbot-toggle" id="chatbotToggle">💬</button>
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">
+        <span>Assistant LABAMAT</span>
+        <button class="chatbot-close" id="chatbotClose">×</button>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot">
+          👋 Salut ! Je suis l'assistant virtuel de LABAMAT. Comment puis-je t'aider aujourd'hui ?
+        </div>
+      </div>
+      <div class="quick-actions">
+        <button class="quick-action" onclick="askBot('Quels sont vos projets ?')">🚀 Vos projets</button>
+        <button class="quick-action" onclick="askBot('Comment acheter ?')">💰 Comment acheter</button>
+        <button class="quick-action" onclick="askBot('Devis personnalisé')">📋 Devis</button>
+        <button class="quick-action" onclick="askBot('Informations contact')">📞 Contact</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compteur de visites -->
+  <div class="visitor-counter">
+    <span class="counter-icon">👥</span>
+    Nombre de visiteurs : <span class="counter-number" id="visitorCount">1,247</span>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -328,15 +652,43 @@
       }
     };
 
-    // Générer la barre de navigation
-    const recentProjectsNav = document.getElementById('recentProjectsNav');
-    Object.entries(projectData).forEach(([key, project]) => {
-      const li = document.createElement('li');
-      li.textContent = project.title;
-      li.addEventListener('click', () => {
-        window.location.href = project.link;
+    // Générer la barre de navigation - SUPPRIMÉ
+    // const recentProjectsNav = document.getElementById('recentProjectsNav');
+    // Object.entries(projectData).forEach(([key, project]) => {
+    //   const li = document.createElement('li');
+    //   li.textContent = project.title;
+    //   li.addEventListener('click', () => {
+    //     window.location.href = project.link;
+    //   });
+    //   recentProjectsNav.appendChild(li);
+    // });
+
+    // Gestion du menu hamburger
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const overlay = document.getElementById('overlay');
+
+    function toggleMenu() {
+      menuToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // Navigation par sections
+    document.querySelectorAll('[data-section]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+          toggleMenu(); // Fermer le menu après navigation
+        }
       });
-      recentProjectsNav.appendChild(li);
     });
 
     // Redirection au clic sur une carte
@@ -357,19 +709,91 @@
       });
     });
 
-    // Effet de disparition de la barre de navigation
-    const navbar = document.querySelector('nav');
-    const projetsSection = document.getElementById('projets');
+    // Effet de disparition de la barre de navigation - SUPPRIMÉ
+    // const navbar = document.querySelector('nav');
+    // const projetsSection = document.getElementById('projets');
 
-    window.addEventListener('scroll', () => {
-      const projetsTop = projetsSection.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
+    // window.addEventListener('scroll', () => {
+    //   const projetsTop = projetsSection.getBoundingClientRect().top;
+    //   const windowHeight = window.innerHeight;
 
-      if (projetsTop < windowHeight / 1.2) {
-        const opacity = Math.max(0, projetsTop / (windowHeight / 1.2));
-        navbar.style.opacity = opacity;
-      } else {
-        navbar.style.opacity = 1;
+    //   if (projetsTop < windowHeight / 1.2) {
+    //     const opacity = Math.max(0, projetsTop / (windowHeight / 1.2));
+    //     navbar.style.opacity = opacity;
+    //   } else {
+    //     navbar.style.opacity = 1;
+    //   }
+    // });
+
+    // Gestion du Chatbot
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+
+    chatbotToggle.addEventListener('click', () => {
+      chatbotWindow.classList.toggle('active');
+    });
+
+    chatbotClose.addEventListener('click', () => {
+      chatbotWindow.classList.remove('active');
+    });
+
+    // Réponses du chatbot
+    const botResponses = {
+      'Quels sont vos projets ?': '🚀 Nous avons 4 catégories principales :\n• Maquettes Volantes (drones, avions RC)\n• Sous-marins Autonomes\n• Modélisme Naval (bateaux)\n• Électronique Embarquée\n\nChaque projet est disponible en plusieurs formules : plans, kits ou modèles finis !',
+      'Comment acheter ?': '💰 Plusieurs options s\'offrent à vous :\n• 📋 Plans détaillés + liste matériaux\n• 🔧 Kits de pièces pré-découpées\n• ✅ Modèles finis prêts à l\'emploi\n• 🎓 Formation personnalisée\n\nContactez-nous via le formulaire pour un devis !',
+      'Devis personnalisé': '📋 Pour un devis personnalisé :\n1. Choisissez votre projet d\'intérêt\n2. Remplissez le formulaire de contact\n3. Précisez vos besoins (plans, kit, modèle fini)\n4. Nous vous répondons sous 24h !\n\n📧 Email : atelier@labamat.fr',
+      'Informations contact': '📞 Contactez-nous :\n📧 Email : atelier@labamat.fr\n📱 Réseaux sociaux : Instagram, Vinted\n🌐 Fichiers CAO disponibles\n💬 Chat en direct ici même !\n\nNous répondons généralement sous 24h.'
+    };
+
+    function askBot(question) {
+      // Ajouter la question de l'utilisateur
+      const userMessage = document.createElement('div');
+      userMessage.className = 'message user';
+      userMessage.textContent = question;
+      chatbotMessages.appendChild(userMessage);
+
+      // Ajouter la réponse du bot après un délai
+      setTimeout(() => {
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot';
+        botMessage.textContent = botResponses[question] || 'Désolé, je n\'ai pas de réponse spécifique à cette question. N\'hésitez pas à nous contacter directement via email : atelier@labamat.fr';
+        chatbotMessages.appendChild(botMessage);
+        
+        // Scroll vers le bas
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }, 500);
+
+      // Scroll vers le bas pour la question utilisateur
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    // Gestion du compteur de visites (simulation)
+    function updateVisitorCount() {
+      const counterElement = document.getElementById('visitorCount');
+      let currentCount = parseInt(counterElement.textContent.replace(',', ''));
+      
+      // Vérifier si c'est une nouvelle visite (simulation avec localStorage)
+      const lastVisit = localStorage.getItem('lastVisit');
+      const today = new Date().toDateString();
+      
+      if (lastVisit !== today) {
+        currentCount += Math.floor(Math.random() * 3) + 1; // Augmente de 1 à 3
+        localStorage.setItem('lastVisit', today);
+        counterElement.textContent = currentCount.toLocaleString('fr-FR');
+      }
+    }
+
+    // Initialiser le compteur au chargement
+    window.addEventListener('load', () => {
+      setTimeout(updateVisitorCount, 1000); // Délai d'1 seconde pour effet
+    });
+
+    // Fermer le chatbot en cliquant à l'extérieur
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.chatbot-container')) {
+        chatbotWindow.classList.remove('active');
       }
     });
   </script>

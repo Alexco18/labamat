@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>LABAMAT | Laboratoire des Amateurs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
   <style>
     body {
       margin: 0;
@@ -84,10 +83,40 @@
       padding: 60px 20px;
     }
 
-    .section-title {
-      text-align: center;
+    .section-box {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 40px;
+      max-width: 1000px;
+      margin: 60px auto;
+    }
+
+    .section-box h2 {
+      color: #0077b6;
       font-size: 2em;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .section-box p {
+      text-align: justify;
+      font-size: 1.05em;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .section-links a {
+      display: inline-block;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #0077b6;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .section-links a:hover {
+      color: #fb8500;
     }
 
     .projects-grid {
@@ -124,24 +153,6 @@
     .card-content h3 {
       margin: 0;
       font-size: 1.3em;
-    }
-
-    #presentation p,
-    #offres p,
-    #liens p {
-      font-size: 1em;
-      color: #555;
-    }
-
-    #liens a {
-      color: #0077b6;
-      font-weight: bold;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    #liens a:hover {
-      color: #fb8500;
     }
 
     footer {
@@ -182,14 +193,12 @@
   </header>
 
   <!-- Présentation -->
-  <section id="presentation">
-    <h2 class="section-title">À propos de LABAMAT</h2>
-    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-      <p>
-        LABAMAT est un collectif passionné dédié au modélisme, à l’innovation technologique et à la création DIY. 
-        Nous explorons les mondes de l’aéronautique, du naval, de la robotique et de l’électronique embarquée, avec une approche accessible et collaborative.
-      </p>
-    </div>
+  <section id="presentation" class="section-box">
+    <h2>À propos de LABAMAT</h2>
+    <p>
+      LABAMAT est un collectif passionné dédié au modélisme, à l’innovation technologique et à la création DIY. 
+      Nous explorons les mondes de l’aéronautique, du naval, de la robotique et de l’électronique embarquée, avec une approche accessible et collaborative.
+    </p>
   </section>
 
   <!-- Projets -->
@@ -224,50 +233,36 @@
   </section>
 
   <!-- Offres -->
-  <section id="offres">
-    <h2 class="section-title">Nos Offres</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="card-content">
-          <h3>Vente de modèles finis</h3>
-          <p>Maquettes prêtes à naviguer ou voler, testées et optimisées.</p>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="card-content">
-          <h3>Pièces détachées & kits</h3>
-          <p>Composants électroniques, coques, moteurs et plans CAO.</p>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="card-content">
-          <h3>Services personnalisés</h3>
-          <p>Conception sur mesure, modélisation 3D et accompagnement technique.</p>
-        </div>
-      </div>
-    </div>
+  <section id="offres" class="section-box">
+    <h2>Nos Offres</h2>
+    <p>
+      LABAMAT propose plusieurs services pour les amateurs et les passionnés : vente de modèles finis testés et optimisés, kits de pièces détachées imprimables ou assemblables, ainsi que des prestations sur mesure en modélisation 3D, conception électronique et accompagnement technique. 
+      Chaque offre est pensée pour rendre l’innovation accessible, fonctionnelle et durable.
+    </p>
   </section>
 
   <!-- Liens -->
-  <section id="liens">
-    <h2 class="section-title">Retrouvez-nous</h2>
-    <div style="text-align: center;">
-      <p><a href="https://www.instagram.com/tonprofil" target="_blank">📸 Instagram</a></p>
-      <p><a href="https://www.vinted.fr/member/tonprofil" target="_blank">🧥 Vinted</a></p>
-      <p><a href="https://www.leboncoin.fr/profil/tonprofil" target="_blank">📦 Leboncoin</a></p>
-      <p><a href="https://tonsite.fr/telechargements" target="_blank">📁 Télécharger les fichiers CAO</a></p>
+  <section id="liens" class="section-box">
+    <h2>Retrouvez-nous</h2>
+    <p>
+      Vous pouvez suivre nos projets, accéder à nos fichiers, ou découvrir nos offres sur différentes plateformes. 
+      Voici les liens utiles pour explorer l’univers LABAMAT :
+    </p>
+    <div class="section-links">
+      <a href="https://www.instagram.com/tonprofil" target="_blank">📸 Instagram</a><br>
+      <a href="https://www.vinted.fr/member/tonprofil" target="_blank">🧥 Vinted</a><br>
+      <a href="https://www.leboncoin.fr/profil/tonprofil" target="_blank">📦 Leboncoin</a><br>
+      <a href="https://tonsite.fr/telechargements" target="_blank">📁 Télécharger les fichiers CAO</a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 LABAMAT - Passion, Innovation, Partage</p>
-    </div>
+    <p>&copy; 2025 LABAMAT - Passion, Innovation, Partage</p>
   </footer>
 
   <!-- Script -->
-    <script>
+  <script>
     const projectData = {
       avion: {
         title: "Maquettes Volantes",
@@ -302,7 +297,9 @@
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', () => {
         const category = card.dataset.category;
-        window.location.href = `projets/${category}.html`;
+        if (category && projectData[category]) {
+          window.location.href = projectData[category].link;
+        }
       });
     });
 

@@ -507,13 +507,108 @@
       updateStats();
     }
 
-    function updateStats() {
+    // Simulation d'activité du blog
+    function simulateBlogActivity() {
+      const fakeMessages = [
+        { author: "TechLover92", message: "Super projet ! Combien de temps pour le monter ?", emoji: "🤔" },
+        { author: "DroneExpert", message: "Excellente stabilisation sur ce modèle. Bravo !", emoji: "👏" },
+        { author: "ModelMaker", message: "Où puis-je trouver les plans détaillés ?", emoji: "📋" },
+        { author: "ElectroFan", message: "La partie électronique m'intéresse beaucoup !", emoji: "⚡" },
+        { author: "NavalPassion", message: "Magnifique réplique de frégate !", emoji: "⚓" },
+        { author: "3DPrintPro", message: "Quel type de filament recommandez-vous ?", emoji: "🖨️" }
+      ];
+      
+      setInterval(() => {
+        // 15% de chance d'ajouter un message toutes les 2 minutes
+        if (Math.random() < 0.15) {
+          const randomMessage = fakeMessages[Math.floor(Math.random() * fakeMessages.length)];
+          const timeOptions = ['Il y a 2 min', 'Il y a 5 min', 'Il y a 8 min', 'Il y a 12 min'];
+          const randomTime = timeOptions[Math.floor(Math.random() * timeOptions.length)];
+          
+          addSimulatedComment(
+            `${randomMessage.emoji} ${randomMessage.author}`,
+            randomMessage.message,
+            randomTime
+          );
+        }
+      }, 120000); // Toutes les 2 minutes
+      
+      // Simulation de likes aléatoires
+      setInterval(() => {
+        const likeButtons = document.querySelectorAll('.comment-btn');
+        const likeButtonsArray = Array.from(likeButtons).filter(btn => btn.textContent.includes('👍'));
+        
+        if (likeButtonsArray.length > 0 && Math.random() < 0.3) {
+          const randomButton = likeButtonsArray[Math.floor(Math.random() * likeButtonsArray.length)];
+          if (!randomButton.disabled) {
+            const currentLikes = parseInt(randomButton.textContent.replace('👍 ', ''));
+            randomButton.textContent = `👍 ${currentLikes + 1}`;
+            updateStats('likes');
+          }
+        }
+      }, 45000); // Toutes les 45 secondes
+    }
+
+    function addSimulatedComment(author, content, timeAgo) {
+      const commentsList = document.getElementById('commentsList');
+      const likes = Math.floor(Math.random() * 8) + 1;
+      
+      const commentHTML = `
+        <div class="comment" style="border-left-color: #ffb703;">
+          <div class="comment-header">
+            <span class="comment-author">${author}</span>
+            <span class="comment-date">${timeAgo}</span>
+          </div>
+          <div class="comment-content">
+            ${content}
+          </div>
+          <div class="comment-actions">
+            <button class="comment-btn">👍 ${likes}</button>
+            <button class="comment-btn">💬 Répondre</button>
+          </div>
+        </div>
+      `;
+      
+      // Ajouter après le formulaire mais avant les autres commentaires
+      const firstComment = commentsList.querySelector('.comment');
+      if (firstComment) {
+        firstComment.insertAdjacentHTML('beforebegin', commentHTML);
+      } else {
+        commentsList.insertAdjacentHTML('afterbegin', commentHTML);
+      }
+      
+      // Mettre à jour les statistiques
+      updateStats('messages');
+      
+      // Animation d'apparition
+      const newComment = commentsList.querySelector('.comment');
+      newComment.style.opacity = '0';
+      newComment.style.transform = 'translateY(-10px)';
+      setTimeout(() => {
+        newComment.style.transition = 'all 0.3s ease';
+        newComment.style.opacity = '1';
+        newComment.style.transform = 'translateY(0)';
+      }, 100);
+    }
+
+    function updateStats(type = 'messages') {
       const statsNumbers = document.querySelectorAll('.stat-number');
-      if (statsNumbers[0]) {
+      
+      if (type === 'messages' && statsNumbers[0]) {
         let currentCount = parseInt(statsNumbers[0].textContent);
         statsNumbers[0].textContent = currentCount + 1;
+      } else if (type === 'likes' && statsNumbers[2]) {
+        let currentCount = parseInt(statsNumbers[2].textContent);
+        statsNumbers[2].textContent = currentCount + 1;
       }
     }
+
+    // Démarrer les simulations
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        simulateBlogActivity();
+      }, 5000); // Démarrer après 5 secondes
+    });
 
     // Gestion des boutons J'aime (simulation)
     document.addEventListener('click', function(e) {

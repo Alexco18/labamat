@@ -48,8 +48,13 @@
     header {
       background: linear-gradient(to right, #0077b6, #00b4d8);
       color: white;
-      padding: 120px 20px 80px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 0 20px;
     }
 
     header h1 {
@@ -87,9 +92,9 @@
       background-color: white;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      padding: 40px;
+      padding: 60px;
       max-width: 1000px;
-      margin: 60px auto;
+      margin: 80px auto;
     }
 
     .section-box h2 {
@@ -106,17 +111,11 @@
       color: #444;
     }
 
-    .section-links a {
-      display: inline-block;
-      margin: 10px 0;
-      font-weight: bold;
+    .section-title {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 40px;
       color: #0077b6;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .section-links a:hover {
-      color: #fb8500;
     }
 
     .projects-grid {
@@ -153,6 +152,34 @@
     .card-content h3 {
       margin: 0;
       font-size: 1.3em;
+    }
+
+    .section-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .section-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #0077b6;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .section-links a:hover {
+      color: #fb8500;
+    }
+
+    .section-links img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
     }
 
     footer {
@@ -248,17 +275,29 @@
       Vous pouvez suivre nos projets, accéder à nos fichiers, ou découvrir nos offres sur différentes plateformes. 
       Voici les liens utiles pour explorer l’univers LABAMAT :
     </p>
-    <div class="section-links">
-      <a href="https://www.instagram.com/tonprofil" target="_blank">📸 Instagram</a><br>
-      <a href="https://www.vinted.fr/member/tonprofil" target="_blank">🧥 Vinted</a><br>
-      <a href="https://www.leboncoin.fr/profil/tonprofil" target="_blank">📦 Leboncoin</a><br>
-      <a href="https://tonsite.fr/telechargements" target="_blank">📁 Télécharger les fichiers CAO</a>
+        <div class="section-links">
+      <a href="https://www.instagram.com/tonprofil" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        Instagram
+      </a>
+      <a href="https://www.vinted.fr/member/tonprofil" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Vinted_logo.png" alt="Vinted">
+        Vinted
+      </a>
+      <a href="https://www.leboncoin.fr/profil/tonprofil" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/fr/4/4e/LeBonCoin_Logo.png" alt="Leboncoin">
+        Leboncoin
+      </a>
+      <a href="https://tonsite.fr/telechargements" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Download_alt_font_awesome.svg" alt="Téléchargement">
+        Fichiers CAO
+      </a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 LABAMAT - Passion, Innovation, Partage</p>
+    <p>&copy; 2025 LABAMAT — Passion, Innovation, Partage</p>
   </footer>
 
   <!-- Script -->

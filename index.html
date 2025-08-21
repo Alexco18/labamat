@@ -737,25 +737,71 @@
       chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
 
-    // Gestion du compteur de visites (simulation)
+    // Gestion du compteur de visites (simulation plus dynamique)
     function updateVisitorCount() {
       const counterElement = document.getElementById('visitorCount');
-      let currentCount = parseInt(counterElement.textContent.replace(',', ''));
+      let currentCount = localStorage.getItem('visitorCount') ? 
+                        parseInt(localStorage.getItem('visitorCount')) : 1247;
       
-      // Vérifier si c'est une nouvelle visite (simulation avec localStorage)
+      // Vérifier si c'est une nouvelle visite
       const lastVisit = localStorage.getItem('lastVisit');
-      const today = new Date().toDateString();
+      const now = Date.now();
       
-      if (lastVisit !== today) {
-        currentCount += Math.floor(Math.random() * 3) + 1; // Augmente de 1 à 3
-        localStorage.setItem('lastVisit', today);
+      // Nouvelle visite si plus de 30 minutes depuis la dernière
+      if (!lastVisit || (now - parseInt(lastVisit)) > 1800000) { // 30 min
+        currentCount += Math.floor(Math.random() * 5) + 1; // Augmente de 1 à 5
+        localStorage.setItem('lastVisit', now.toString());
+        localStorage.setItem('visitorCount', currentCount.toString());
+        
+        // Animation du compteur
+        animateCounter(counterElement, currentCount);
+      } else {
         counterElement.textContent = currentCount.toLocaleString('fr-FR');
       }
     }
 
+    // Animation du compteur
+    function animateCounter(element, targetValue) {
+      const startValue = parseInt(element.textContent.replace(/,/g, ''));
+      const duration = 1500;
+      const startTime = Date.now();
+      
+      function updateNumber() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const currentValue = Math.round(startValue + (targetValue - startValue) * progress);
+        element.textContent = currentValue.toLocaleString('fr-FR');
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateNumber);
+        }
+      }
+      
+      updateNumber();
+    }
+
+    // Simulation d'activité en arrière-plan
+    function simulateActivity() {
+      const counterElement = document.getElementById('visitorCount');
+      
+      setInterval(() => {
+        // 10% de chance d'ajouter un visiteur toutes les 30 secondes
+        if (Math.random() < 0.1) {
+          let currentCount = parseInt(localStorage.getItem('visitorCount')) || 1247;
+          currentCount += Math.floor(Math.random() * 2) + 1;
+          localStorage.setItem('visitorCount', currentCount.toString());
+          animateCounter(counterElement, currentCount);
+        }
+      }, 30000); // Toutes les 30 secondes
+    }
+
     // Initialiser le compteur au chargement
     window.addEventListener('load', () => {
-      setTimeout(updateVisitorCount, 1000); // Délai d'1 seconde pour effet
+      setTimeout(() => {
+        updateVisitorCount();
+        simulateActivity(); // Démarrer la simulation d'activité
+      }, 1000);
     });
 
     // Fermer le chatbot en cliquant à l'extérieur

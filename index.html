@@ -10,8 +10,7 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: #f9f9f9;
       color: #333;
-    footer {
-      background-color: #0077b6;
+    }
 
     /* Menu Hamburger Circulaire */
     .menu-toggle {
@@ -128,8 +127,6 @@
       visibility: visible;
     }
 
-
-
     header {
       background: linear-gradient(to right, #0077b6, #00b4d8);
       color: white;
@@ -170,16 +167,16 @@
     }
 
     section {
-      padding: 30px 20px; /* Réduit de 60px à 30px */
+      padding: 30px 20px;
     }
 
     .section-box {
       background-color: white;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      padding: 40px; /* Réduit de 60px à 40px */
+      padding: 40px;
       max-width: 1000px;
-      margin: 20px auto; /* Réduit de 80px à 20px pour l'espacement vertical */
+      margin: 20px auto;
     }
 
     .section-box h2 {
@@ -423,10 +420,13 @@
       font-size: 1.1em;
       color: #ffb703;
     }
+
+    footer {
+      background-color: #0077b6;
       color: white;
       text-align: center;
       padding: 30px 20px;
-      margin-top: 30px; /* Réduit de 60px à 30px */
+      margin-top: 30px;
     }
 
     @media (max-width: 1000px) {
@@ -457,11 +457,6 @@
 
       .cta-button {
         padding: 10px 20px;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
       }
 
       .project-card {
@@ -652,17 +647,6 @@
       }
     };
 
-    // Générer la barre de navigation - SUPPRIMÉ
-    // const recentProjectsNav = document.getElementById('recentProjectsNav');
-    // Object.entries(projectData).forEach(([key, project]) => {
-    //   const li = document.createElement('li');
-    //   li.textContent = project.title;
-    //   li.addEventListener('click', () => {
-    //     window.location.href = project.link;
-    //   });
-    //   recentProjectsNav.appendChild(li);
-    // });
-
     // Gestion du menu hamburger
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
@@ -708,22 +692,6 @@
         behavior: 'smooth'
       });
     });
-
-    // Effet de disparition de la barre de navigation - SUPPRIMÉ
-    // const navbar = document.querySelector('nav');
-    // const projetsSection = document.getElementById('projets');
-
-    // window.addEventListener('scroll', () => {
-    //   const projetsTop = projetsSection.getBoundingClientRect().top;
-    //   const windowHeight = window.innerHeight;
-
-    //   if (projetsTop < windowHeight / 1.2) {
-    //     const opacity = Math.max(0, projetsTop / (windowHeight / 1.2));
-    //     navbar.style.opacity = opacity;
-    //   } else {
-    //     navbar.style.opacity = 1;
-    //   }
-    // });
 
     // Gestion du Chatbot
     const chatbotToggle = document.getElementById('chatbotToggle');

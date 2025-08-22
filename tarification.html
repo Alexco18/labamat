@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarification - LABAMAT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0077b6;
+      --primary-dark: #004499;
+      --primary-light: #3388dd;
+      --accent: #ffb703;
+      --accent-hover: #fb8500;
+      --success: #10b981;
+      --dark: #1a1a2e;
+      --light: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-600: #475569;
+      --gray-800: #1e293b;
+      --text: #334155;
+      --gradient-bg: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      --shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .nav-back:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateX(-3px);
+      border-color: var(--primary);
+    }
+
+    .nav-back::before {
+      content: '←';
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: var(--gradient-bg);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-title {
+      font-weight: 600;
+      color: var(--gray-600);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--gradient-bg);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    /* Search Bar */
+    .search-section {
+      background: white;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 10;
+      margin-top: -1rem;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .search-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 1rem 3rem 1rem 1.5rem;
+      border: 3px solid var(--gray-200);
+      border-radius: 25px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      background: var(--gray-100);
+    }
+
+    .search-bar:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-600);
+      font-size: 1.3rem;
+      pointer-events: none;
+    }
+
+    /* Categories Section */
+    .categories-section {
+      background: white;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .categories-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .categories-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 2rem;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .category-card {
+      background: var(--gray-100);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 183, 3, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      background: white;
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .category-card:hover::before {
+      left: 100%;
+    }
+
+    .category-card.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary-dark);
+    }
+
+    .category-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .category-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .category-count {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Products Section */
+    .products-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .products-count {
+      font-size: 1rem;
+      color: var(--gray-600);
+      font-weight: 400;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      border-color: var(--accent);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 220px;
+      background: var(--gradient-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .product-content {
+      padding: 1.5rem;
+    }
+
+    .product-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-description {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .product-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem;
+      background: var(--gray-100);
+      border-radius: 10px;
+      font-size: 0.9rem;
+    }
+
+    .option-name {
+      font-weight: 500;
+    }
+
+    .option-price {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-bg);
+      color: white;
+      flex: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 119, 182, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      flex: 1;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* No Results */
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--gray-600);
+    }
+
+    .no-results-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .no-results h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .hero h1 { font-size: 2rem; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      
+      .product-actions {
+        flex-direction: column;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .product-card {
+      animation: fadeInUp 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="header-nav">
+      <a href="index.html" class="nav-back">Retour à l'accueil</a>
+      <div class="logo">LABAMAT</div>
+      <div class="header-title">Tarification & Projets</div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🛒 Nos Offres & Tarifs</h1>
+      <p>Découvrez notre gamme complète de projets et choisissez la formule qui vous convient</p>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <div class="search-container">
+      <input type="text" class="search-bar" id="searchInput" placeholder="Rechercher un projet ou produit...">
+      <span class="search-icon">🔍</span>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section">
+    <div class="categories-container">
+      <h2 class="categories-title">📂 Catégories</h2>
+      <div class="categories-grid">
+        <div class="category-card active" data-category="all">
+          <span class="category-icon">🎯</span>
+          <div class="category-name">Tous les projets</div>
+          <div class="category-count">12 projets</div>
+        </div>
+        <div class="category-card" data-category="avion">
+          <span class="category-icon">✈️</span>
+          <div class="category-name">Maquettes Volantes</div>
+          <div class="category-count">3 projets</div>
+        </div>
+        <div class="category-card" data-category="bateau">
+          <span class="category-icon">⛵</span>
+          <div class="category-name">Modélisme Naval</div>
+          <div class="category-count">4 projets</div>
+        </div>
+        <div class="category-card" data-category="sub">
+          <span class="category-icon">🚤</span>
+          <div class="category-name">Sous-marins</div>
+          <div class="category-count">2 projets</div>
+        </div>
+        <div class="category-card" data-category="electronique">
+          <span class="category-icon">⚡</span>
+          <div class="category-name">Électronique</div>
+          <div class="category-count">3 projets</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section">
+    <div class="section-title">
+      <span>🎯 Tous les projets</span>
+      <span class="products-count" id="productsCount">(12 résultats)</span>
+    </div>
+    
+    <div class="products-grid" id="productsGrid">
+      <!-- Maquettes Volantes -->
+      <div class="product-card" data-category="avion" data-name="drone modélisé">
+        <div class="product-image">🛸
+          <div class="product-badge">Populaire</div>
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">Drone Modélisé RC</h3>
+          <p class="product-description">Drone radiocommandé avec système de stabilisation avancé et contrôle précis</p>
+          <div class="product-options">
+            <div class="option">
+              <span class="option-name">📋 Plans + Liste matériaux</span>
+              <span class="option-price">45€</span>
+            </div>
+            <div class="option">
+              <span class="option-name">🔧 Kit pièces pré-découpées</span>
+              <span class="option-price">185€</span>
+            </div>
+            <div class="option">
+              <span class="option-name">✅ Drone assemblé complet</span>
+              <span class="option-price">320€</span>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="projets/avion.html" class="btn btn-primary">Voir le projet</a>
+            <a href="#contact" class="btn btn-outline">Devis</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modélisme Naval -->
+      <div class="product-card" data-category="bateau" data-name="frégate surcouf">
+        <div class="product-image">⛵
+          <div class="product-badge">Nouveau</div>
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">Frégate Surcouf</h3>
+          <p class="product-description">Réplique fidèle motorisée d'une frégate française classe La Fayette</p>
+          <div class="product-options">
+            <div class="option">
+              <span class="option-name">📋 Plans détaillés</span>
+              <span class="option-price">55€</span>
+            </div>
+            <div class="option">
+              <span class="option-name">🔧 Kit complet</span>
+              <span class="option-price">245€</span>
+            </div>
+            <div class="option">
+              <span class="option-name">✅ Maquette prête</span>
+              <span class="option-price">385€</span>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="projets/bateau.html" class="btn btn-primary">Voir le projet</a>
+            <a href="#contact" class="btn btn-outline">Devis</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sous-marins -->
+      <div class="product-card" data-category="sub" data-name="sous-marin autonome">
+        <div class="product-image">🚤</div>
+        <div class="product-content">
+          <h3 class="product-title">Sous-marin Autonome</h3>
+          <p class="product-description">Sous-marin télécommandé étanche avec navigation autonome et caméra</p>
+          <div class="product-options">
+            <div class="option">
+              <span class="option-name">📋 Plans + Étanchéité</span>
+              <span class="option-price">65€</span>
+            </div>
+            <div class="option">
+              <span class="option-name">🔧 Kit spécialisé</span>
+              <span class="option-price">295€</span>
+            </div>
+            <div class="option">
+              <span class="option-name">✅ Sous-marin testé</span>
+              <span class="option-price">455€</span>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="projets/sous-marin.html" class="btn btn-primary">Voir le projet</a>
+            <a href="#contact" class="btn btn-outline">Devis</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Électronique -->
+      <div class="product-card" data-category="electronique" data-name="carte arduino personnalisée">
+        <div class="product-image">⚡</div>
+        <div class="product-content">
+          <h3 class="product-title">Carte Arduino Personnalisée</h3>
+          <p class="product-description">Système électronique sur mesure avec capteurs IoT et solutions connectées</p>
+          <div class="product-options">
+            <div class="option">
+              <span class="option-name">📋 Schéma électronique</span>
+              <span class="option-price">35€</span>
+            </div>
+            <div class="option">
+              <span class="option-name">🔧 Composants + PCB</span>
+              <span class="option-price">125€</span>
+            </div>
